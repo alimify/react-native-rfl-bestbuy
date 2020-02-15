@@ -27,7 +27,7 @@ const ProductDesign = props => {
          
     return (
       <TouchableOpacity onPress={() => {  props.navigation.navigate("Product", { product: props.product }) }}>
-        <View style={styles.container}>
+        <View style={{ ...props.style,...styles.container}}>
           <View style={styles.imageContainer}>
             <Image
               style={styles.image}
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         borderColor: '#ddd',
         borderWidth: 1,
         margin: 3,
-        flexBasis: '48.5%',
+        // flexBasis: '48.5%',
         backgroundColor:'white'
     },
 

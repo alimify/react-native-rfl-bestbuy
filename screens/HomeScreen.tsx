@@ -1,11 +1,12 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
 
 import {
   StyleSheet,
   View,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Text
 } from "react-native";
 
 import { Ionicons } from '@expo/vector-icons'
@@ -22,11 +23,39 @@ import NavigationService from '../navigation/NavigationService'
 const HomeScreen = (props) => {
 
 
-  const { home } = props.store;
+  const { home } = props.store,
+    [getLoading, setLoading] = useState(true)
+
 
   useEffect(() => {
-    home.fetchIndex();
+
+
+    const loadData = async (home) => {
+      await home.fetchIndex();
+      await home.fetchJustForYou({
+        limit: 8
+      })
+      await home.fetchBestBuyChoices({
+        limit: 8
+      })
+      setLoading(false)
+    }
+
+    loadData(home)
+
+
   }, [home])
+
+
+  if (getLoading) {
+    return (<View>
+      <Text>
+        Loading...
+      </Text>
+    </View>)
+  }
+
+
 
 
   const CategoryOneProducts = home.INDEX
@@ -40,86 +69,78 @@ const HomeScreen = (props) => {
       : false;
 
   return (
-      <ScrollView>
+    <ScrollView>
+      <View>
         <View>
-          <View>
-            <Sliders
-              sliders={
-                home.INDEX
-                  ? home.INDEX.mobilesliders
-                  : false
-              }
-            />
-          </View>
-          <View>
-            <FlashSale
-              flashSales={
-                home.INDEX
-                  ? home.INDEX.flash_sales
-                  : false
-              }
-            />
-          </View>
-          <View>
-            <NewArrivals
-              products={
-                home.INDEX
-                  ? home.INDEX.new_arrivals
-                  : false
-              }
-            />
-          </View>
-          <View>
-            <JustForYou
-              products={
-                home.INDEX
-                  ? home.INDEX.justForYou
-                  : false
-              }
-            />
-          </View>
-          <View>
-            <ProductSet
-              products={
-                home.INDEX
-                  ? home.INDEX.bestbuy_choices
-                  : false
-              }
-              title="Recommended"
-            />
-          </View>
-          <View>
-            <ProductSet
-              title={
-                home.INDEX
-                  ? home.INDEX.category_one.name
-                  : ""
-              }
-              products={CategoryOneProducts}
-            />
-          </View>
-          <View>
-            <ProductSet
-              title={
-                home.INDEX
-                  ? home.INDEX.category_two.name
-                  : ""
-              }
-              products={CategoryTwoProducts}
-            />
-          </View>
-          <View>
-            <ProductSet
-              title={
-                home.INDEX
-                  ? home.INDEX.category_three.name
-                  : ""
-              }
-              products={CategoryThreeProducts}
-            />
-          </View>
+          <Sliders
+            sliders={
+              home.INDEX
+                ? home.INDEX.mobilesliders
+                : false
+            }
+          />
         </View>
-      </ScrollView>
+        <View>
+          <FlashSale
+            flashSales={
+              home.INDEX
+                ? home.INDEX.flash_sales
+                : false
+            }
+          />
+        </View>
+        <View>
+          <NewArrivals
+            products={
+              home.INDEX
+                ? home.INDEX.new_arrivals
+                : false
+            }
+          />
+        </View>
+        <View>
+          <JustForYou
+            products={home.JUST_FOR_YOU}
+          />
+        </View>
+        <View>
+          <ProductSet
+            products={home.BESTBUY_CHOICES}
+            title="Recommended"
+          />
+        </View>
+        <View>
+          <ProductSet
+            title={
+              home.INDEX
+                ? home.INDEX.category_one.name
+                : ""
+            }
+            products={CategoryOneProducts}
+          />
+        </View>
+        <View>
+          <ProductSet
+            title={
+              home.INDEX
+                ? home.INDEX.category_two.name
+                : ""
+            }
+            products={CategoryTwoProducts}
+          />
+        </View>
+        <View>
+          <ProductSet
+            title={
+              home.INDEX
+                ? home.INDEX.category_three.name
+                : ""
+            }
+            products={CategoryThreeProducts}
+          />
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 

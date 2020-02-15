@@ -6,22 +6,30 @@ import { inject, observer } from "mobx-react";
 
 const StartUpScreen = props => {
 
-    const [getLoading, setLoading] = useState(false),
+    const [getLoading, setLoading] = useState(true),
          {user,common} = props.store
     
 
     useEffect(() => {
-        setLoading(true)
-        user.fetchAccount()
-        setLoading(false)
 
-        setLoading(true)
-        common.fetchGlobals()
-        setLoading(false)
-    })
+        const loadData = async () => {
+            try {
+                await user.fetchAccount()
+                await common.fetchGlobals()
+            } catch{
 
-    if (user.ACCOUNT) {
-        props.navigation.navigate('Home')
+            } finally {
+                await setLoading(false)
+            }
+
+        }
+        loadData()
+    },[user,common,setLoading])
+
+    if (!getLoading) {
+        setTimeout(function () {
+            props.navigation.navigate('Home') 
+        },200)
     }
     
 

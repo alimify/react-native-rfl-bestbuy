@@ -1,4 +1,4 @@
-import React,{useEffect,useCallback,useState} from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import { withNavigation } from 'react-navigation'
 import { inject, observer } from "mobx-react";
@@ -11,28 +11,28 @@ import PaymentMethod from '../components/product/PaymentMethod'
 import Reviews from '../components/product/Reviews'
 import SimilarProduct from '../components/product/SimilarProduct'
 
-const ProductScreen =   (props) => {
+const ProductScreen = (props) => {
   const product = props.navigation.getParam('product'),
     { shop, user } = props.store,
-    [getLoading,setLoading] = useState(false)
+    [getLoading, setLoading] = useState(true)
 
-  
+
   useEffect(() => {
 
 
     const ProductLoading = async (shop, product) => {
       setLoading(true)
-     const loadingProduct = await shop.fetchProductDetails({
+      await shop.fetchProductDetails({
         slug: product.seo_url
-     })
+      })
       setLoading(false)
     }
 
-    ProductLoading(shop,product)
+    ProductLoading(shop, product)
 
 
   }, [shop, product])
-  
+
 
   if (getLoading) {
     return (<View>
@@ -41,32 +41,32 @@ const ProductScreen =   (props) => {
       </Text>
     </View>)
   }
-  
-    return (
-      <ScrollView>
+
+  return (
+    <ScrollView>
+      <View>
+        <ImageSlider product={shop.PRODUCT_DETAILS} />
         <View>
-          <ImageSlider product={shop.PRODUCT_DETAILS} />
-          <View>
-            <Text style={styles.title}> {product.title} </Text>
-          </View>
-          <View style={styles.slotContainer}>
-            <SelectVariation product={shop.PRODUCT_DETAILS} />
-          </View>
-          <View style={styles.slotContainer}>
-            <DeliveryInformation product={product} />
-          </View>
-          <View style={styles.slotContainer}>
-            <PaymentMethod product={product} />
-          </View>
-          <View style={styles.slotContainer}>
-            <Reviews product={shop.PRODUCT_DETAILS} />
-          </View>
-          <View style={styles.slotContainer}>
-            <SimilarProduct product={shop.PRODUCT_DETAILS} />
-          </View>
+          <Text style={styles.title}> {product.title} </Text>
         </View>
-      </ScrollView>
-    );
+        <View style={styles.slotContainer}>
+          <SelectVariation product={shop.PRODUCT_DETAILS} />
+        </View>
+        <View style={styles.slotContainer}>
+          <DeliveryInformation product={product} />
+        </View>
+        <View style={styles.slotContainer}>
+          <PaymentMethod product={product} />
+        </View>
+        <View style={styles.slotContainer}>
+          <Reviews product={shop.PRODUCT_DETAILS} />
+        </View>
+        <View style={styles.slotContainer}>
+          <SimilarProduct product={shop.PRODUCT_DETAILS} />
+        </View>
+      </View>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -99,7 +99,7 @@ ProductScreen.navigationOptions = navData => {
   return {
     tabBarVisible: false
   }
- }
+}
 
 
 export default inject("store")(observer(withNavigation(ProductScreen)))

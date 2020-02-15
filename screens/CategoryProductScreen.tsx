@@ -2,6 +2,7 @@ import { inject,observer } from 'mobx-react'
 import React,{useEffect,useState} from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import ProductDesign from '../components/helpers/ProductDesign'
+import DefaultStyles from '../constants/DefaultStyles'
 
 const CategoryProductScreen = (props) => {
 
@@ -36,8 +37,14 @@ const CategoryProductScreen = (props) => {
     return (
         <View style={styles.container}>
             <ScrollView>
-                <View style={styles.productsContainer}>
-                    {products.map((item) => <ProductDesign key={item.id} product={item}/>)}
+                <View style={DefaultStyles.flexContainer}>
+                    {products.map((item,key) => {
+
+                        return (
+                            <View key={key.toString()} style={DefaultStyles.w50}>
+                                <ProductDesign style={DefaultStyles.w95} product={item} key={key.toString()} />
+                            </View>)                    
+                    })}
                 </View>
             </ScrollView>
         </View>

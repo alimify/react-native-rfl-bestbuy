@@ -30,7 +30,12 @@ const Product = props => {
             }}
         >
             <View style={styles.productContainer}>
-                <Image source={{ uri: 'https://rflbestbuy.com/secure/' + props.product.image?props.product.image.full_size_directory:'' }} style={{ width: 100, height: 100 }} />
+                {props.product.image ? (
+                    <Image source={{ uri: 'https://rflbestbuy.com/secure/' + props.product.image.full_size_directory }} style={{ width: 100, height: 100 }} />
+                ): (
+                        <Image source={{ uri: '' }} style={{ width: 100, height: 100 }} />
+                )}
+                
                 <PriceText product={props.product} />
             </View>
         </TouchableOpacity>

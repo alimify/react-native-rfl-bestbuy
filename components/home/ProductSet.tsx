@@ -10,7 +10,8 @@ const Recommended = props => {
     if (!props.products) {
         return <View></View>;
     }
-
+  
+  const products = props.products.slice(0, 8)
 
     return (
       <View style={styles.container}>
@@ -18,16 +19,14 @@ const Recommended = props => {
           <Text style={styles.title}>{props.title}</Text>
           <Text style={styles.moreText}>More > </Text>
         </View>
-        <View>
-          <FlatList
-            data={props.products.slice(0, 8)}
-            keyExtractor={(item, index) => index.toString()}
-            numColumns={2}
-            renderItem={({ item }) => (
-              <ProductDesign product={item} />
-            )}
-            columnWrapperStyle={DefaultStyles.flatListRow}
-            />
+        <View style={{ ...DefaultStyles.flexContainer,...DefaultStyles.ph5}}>
+          {products.map((item, key) => {
+            return (
+              <View key={key.toString()} style={DefaultStyles.w50}>
+              <ProductDesign style={DefaultStyles.w95} product={item} key={key.toString()} />
+            </View>)
+          })}
+
         </View>
       </View>
     );
@@ -36,7 +35,7 @@ const Recommended = props => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginHorizontal: 5
+        marginHorizontal: 1
     },
     titleContainer: {
         flex: 1,

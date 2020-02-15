@@ -50,14 +50,15 @@ const HomeFlashSale = props => {
       
         </View>
       </View>
-      <View style={styles.itemsContainer}>
+      <View style={DefaultStyles.flexContainer}>
 
-        <FlatList
-          data={flashItems}
-          numColumns={2}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={() => <FlashItem />}
-        />
+        {flashItems.map((item, key) => {
+          return (
+            <View key={key.toString()}  style={DefaultStyles.w50}>
+              <FlashItem/>
+            </View>
+          )
+        })}
       </View>
     </View>
   );
@@ -65,7 +66,7 @@ const HomeFlashSale = props => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1
+    flex: 1
   },
   titleContainer: {
     flex: 1,

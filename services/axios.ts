@@ -10,7 +10,7 @@ const access_token = '',
 
 
 var axiosInstance = axios.create({
-  baseURL: 'http://103.106.237.112:8080/samnuxt/secure/'
+  baseURL: 'https://rflbestbuy.com/secure/'
 });
 axiosInstance.defaults.headers.common["Content-Type"] = "application/json";
 
@@ -36,20 +36,20 @@ class axioInstance {
     const token = await storage.get('token')
     this.axios.defaults.headers.common["Authorization"] = "Bearer " + token;
 
-    console.log(uri,params)
+    console.log(uri,params,this.method)
 
     return await this.axios.get(uri, params)
   }
 
   async post(uri, info) {
     this.params = info
-    this.method = 'get'
+    this.method = 'post'
     const params = this.mergeParams()
     
     const token = await storage.get("token");
     this.axios.defaults.headers.common["Authorization"] = "Bearer " + token;
 
-    console.log(params)
+    console.log(uri, params, this.method)
 
     return await this.axios.post(uri, params);
   }
