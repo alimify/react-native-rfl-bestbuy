@@ -1,5 +1,6 @@
 import React from 'react'
-import {View,Text,StyleSheet,Image,TouchableOpacity} from 'react-native'
+import {View,StyleSheet,Image,TouchableOpacity} from 'react-native';
+import Text from "../helpers/Text";
 
 
 const CategorySideBarItem = props => {

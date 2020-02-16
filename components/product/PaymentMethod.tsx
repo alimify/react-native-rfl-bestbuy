@@ -1,7 +1,6 @@
 import React from "react";
 import {
-  StyleSheet,
-  Text,
+  StyleSheet,  
   View,
   ScrollView,
   Image,
@@ -9,6 +8,7 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import ProductDesign from "../helpers/ProductDesign";
+import Text from "../helpers/Text";
 
 const HomeScreen = props => {
 

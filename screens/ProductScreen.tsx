@@ -1,7 +1,8 @@
 import React, { useEffect, useCallback, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, ScrollView, Image } from 'react-native';
 import { withNavigation } from 'react-navigation'
 import { inject, observer } from "mobx-react";
+import Text from "../components/helpers/Text";
 
 
 import ImageSlider from '../components/product/ImageSlider'

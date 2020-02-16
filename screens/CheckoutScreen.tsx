@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
+import { StyleSheet, View, ScrollView, Image } from "react-native";
+import Text from "../components/helpers/Text";
 
 const CheckoutScreen = props => {
   return (

@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View} from "react-native";
+import { StyleSheet, View} from "react-native";
 import { withNavigation } from 'react-navigation'
 import { inject, observer } from "mobx-react";
-import Product from '../../components/helpers/SimilarProductDesign'
+import Product from '../../components/helpers/SimilarProductDesign';
+import Text from "../helpers/Text";
 
 
 const SimilarProduct = props => {

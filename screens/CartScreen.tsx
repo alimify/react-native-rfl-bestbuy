@@ -3,14 +3,14 @@ import { inject, observer } from 'mobx-react'
 
 import {
   StyleSheet,
-  Text,
   View,
   ScrollView,
   Image,
   Button
 } from "react-native";
 
-import DefaultStyles from '../constants/DefaultStyles'
+import DefaultStyles from '../constants/DefaultStyles';
+import Text from "../components/helpers/Text";
 
 const CartItem = props => {
   return (

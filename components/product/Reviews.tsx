@@ -1,8 +1,10 @@
 import React,{useEffect} from "react";
-import { StyleSheet, Text, View, ScrollView, Image,TouchableOpacity } from "react-native";
+import { StyleSheet, View, ScrollView, Image,TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { withNavigation } from 'react-navigation'
+import { withNavigation } from 'react-navigation';
 import { inject, observer } from "mobx-react";
+import Text from "../helpers/Text";
+
 
 const Review = props => {
 

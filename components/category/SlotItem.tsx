@@ -1,7 +1,8 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react'
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import Text from "../helpers/Text";
 
 const SlotItem = props => {
   const { navigate } = props.navigation,

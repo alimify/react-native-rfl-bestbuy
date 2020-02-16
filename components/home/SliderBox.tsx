@@ -2,14 +2,14 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 import { SliderBox } from "react-native-image-slider-box";
 import {
-  StyleSheet,
-  Text,
+  StyleSheet,  
   View,
   ScrollView,
   Image,
   Button
 } from "react-native";
-import Colors from '../../constants/Colors'
+import Colors from '../../constants/Colors';
+import Text from "../helpers/Text";
 
 const Sliders = props => {
 

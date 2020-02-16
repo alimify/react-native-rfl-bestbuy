@@ -1,7 +1,8 @@
 import React,{useEffect,useCallback} from 'react';
-import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image,TouchableOpacity } from 'react-native';
 import {withNavigation} from 'react-navigation'
 import { inject, observer } from "mobx-react";
+import Text from './Text';
 
 const PriceText = (props) => {
    return !(

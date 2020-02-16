@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, Picker } from "react-native";
+import { StyleSheet, View, ScrollView, Image, TouchableOpacity, Picker } from "react-native";
 import { inject, observer } from 'mobx-react'
 import { AntDesign } from "@expo/vector-icons";
-import Modal from 'react-native-modal'
-import { withNavigation } from 'react-navigation'
+import Modal from 'react-native-modal';
+import { withNavigation } from 'react-navigation';
+import Text from "../helpers/Text";
 
 const DeliveryLocation = props => {
 

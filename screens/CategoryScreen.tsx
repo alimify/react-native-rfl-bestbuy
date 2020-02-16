@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { inject, observer } from "mobx-react";
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, ScrollView, Image } from 'react-native';
+import Text from "../components/helpers/Text";
 
 
 import SiderBarItem from '../components/category/SideBarItem'

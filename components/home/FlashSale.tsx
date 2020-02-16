@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, FlatList, SafeAreaView } from "react-native";
+import { StyleSheet, View, Image, FlatList, SafeAreaView } from "react-native";
 import DefaultStyles from '../../constants/DefaultStyles'
 import Colors from "../../constants/Colors";
+import Text from "../helpers/Text";
 
 const FlashItem = props => {
   return (

@@ -6,9 +6,8 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  Text
 } from "react-native";
-
+import Text from "../components/helpers/Text";
 import { Ionicons } from '@expo/vector-icons'
 import { HeaderButtons, HeaderButton, Item } from "react-navigation-header-buttons";
 import Sliders from "../components/home/SliderBox";

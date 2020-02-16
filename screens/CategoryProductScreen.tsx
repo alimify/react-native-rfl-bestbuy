@@ -1,8 +1,9 @@
 import { inject,observer } from 'mobx-react'
 import React,{useEffect,useState} from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import ProductDesign from '../components/helpers/ProductDesign'
-import DefaultStyles from '../constants/DefaultStyles'
+import { StyleSheet, View, ScrollView } from 'react-native';
+import ProductDesign from '../components/helpers/ProductDesign';
+import DefaultStyles from '../constants/DefaultStyles';
+import Text from "../components/helpers/Text";
 
 const CategoryProductScreen = (props) => {
 

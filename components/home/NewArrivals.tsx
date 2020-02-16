@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView,SectionList, Image,TouchableOpacity } from "react-native";
+import { StyleSheet, View, ScrollView,SectionList, Image,TouchableOpacity } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-import Colors from '../../constants/Colors'
-import {withNavigation} from 'react-navigation'
+import Colors from '../../constants/Colors';
+import {withNavigation} from 'react-navigation';
+import Text from "../helpers/Text";
 
 
 const PriceText = props => {

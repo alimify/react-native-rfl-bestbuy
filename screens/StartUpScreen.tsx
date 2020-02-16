@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from "react";
-import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
-import storage from '../services/asyncStorage'
+import { StyleSheet, View, ScrollView, Image } from "react-native";
+import storage from '../services/asyncStorage';
 import { inject, observer } from "mobx-react";
+import Text from "../components/helpers/Text";
 
 
 const StartUpScreen = props => {

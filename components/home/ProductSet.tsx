@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View} from "react-native";
+import { StyleSheet, View} from "react-native";
 
 import ProductDesign from "../helpers/ProductDesign";
 import { FlatList } from "react-native-gesture-handler";
 import Colors from "../../constants/Colors";
-import DefaultStyles from '../../constants/DefaultStyles'
+import DefaultStyles from '../../constants/DefaultStyles';
+import Text from "../helpers/Text";
 
 const Recommended = props => {
     if (!props.products) {
