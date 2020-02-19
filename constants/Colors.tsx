@@ -8,7 +8,8 @@ const Colors = {
     baseColor5:'#2E2E54',
     baseColor6:'#eb1b2b',
     baseColor7:'#3d82e6',
-    baseColor8:'#fafafa',
+    baseColor8: '#fafafa',
+    fontColor1:'#fff'
 
 }
 

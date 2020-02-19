@@ -4,6 +4,7 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import ProductDesign from '../components/helpers/ProductDesign';
 import DefaultStyles from '../constants/DefaultStyles';
 import Text from "../components/helpers/Text";
+import Spinner from "../components/helpers/Spinner";
 
 const CategoryProductScreen = (props) => {
 
@@ -15,7 +16,11 @@ const CategoryProductScreen = (props) => {
 
         const loadingProduct = async (shop, category) => {
             setLoading(true)
-            await shop.fetchSearchProducts({ slug: category.seo_url });
+            
+            if (category.seo_url) {
+                await shop.fetchSearchProducts({ slug: category.seo_url });
+            }
+            
             setLoading(false)
         }
 
@@ -25,9 +30,7 @@ const CategoryProductScreen = (props) => {
     
 
     if (getLoading) {
-        return (<View>
-            <Text>Loading...</Text>
-        </View>)
+        return <Spinner/>
     }
     
     const products = shop.SEARCH_PRODUCTS?shop.SEARCH_PRODUCTS.products.data:[]

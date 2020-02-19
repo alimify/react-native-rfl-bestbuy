@@ -1,9 +1,8 @@
 import React from "react";
-import { StyleSheet, View, ScrollView,SectionList, Image,TouchableOpacity } from "react-native";
+import { StyleSheet, View,Text, ScrollView,SectionList, Image,TouchableOpacity } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import Colors from '../../constants/Colors';
 import {withNavigation} from 'react-navigation';
-import Text from "../helpers/Text";
 
 
 const PriceText = props => {
@@ -64,7 +63,11 @@ const NewArrivals = props => {
     <View>
       <View style={styles.titleContainer}>
         <Text style={styles.titleText}>New Arrivals</Text>
-        <Text style={styles.titleMore}>More ></Text>
+        <TouchableOpacity onPress={() => {
+          props.navigation.navigate('NewArrivals')
+        }}>
+          <Text style={styles.titleMore}>More ></Text>
+        </TouchableOpacity>
       </View>
         <FlatList
                   data={products}
