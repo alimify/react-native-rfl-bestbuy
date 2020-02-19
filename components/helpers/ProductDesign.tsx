@@ -1,8 +1,7 @@
 import React,{useEffect,useCallback} from 'react';
-import { StyleSheet, View, Image,TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image,TouchableOpacity,Text } from 'react-native';
 import {withNavigation} from 'react-navigation'
 import { inject, observer } from "mobx-react";
-import Text from './Text';
 
 const PriceText = (props) => {
    return !(
@@ -30,13 +29,18 @@ const ProductDesign = props => {
       <TouchableOpacity onPress={() => {  props.navigation.navigate("Product", { product: props.product }) }}>
         <View style={{ ...props.style,...styles.container}}>
           <View style={styles.imageContainer}>
-            <Image
-              style={styles.image}
-              source={{
-                uri:
-                  "https://rflbestbuy.com/secure/"+props.product.image.full_size_directory
-              }}
-            />
+            {props.product.image ? (
+              <Image
+                style={styles.image}
+                source={{
+                  uri:
+                    "https://rflbestbuy.com/secure/" + props.product.image.full_size_directory
+                }}
+              />
+            ): (
+                <Text></Text>
+            )}
+
           </View>
           <View style={styles.textContainer}>
             <View style={styles.titleContainer}>

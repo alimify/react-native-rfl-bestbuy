@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView, Image } from 'react-native';
 import { withNavigation } from 'react-navigation'
 import { inject, observer } from "mobx-react";
 import Text from "../components/helpers/Text";
-
+import Spinner from "../components/helpers/Spinner";
 
 import ImageSlider from '../components/product/ImageSlider'
 import SelectVariation from '../components/product/SelectVariation'
@@ -36,11 +36,7 @@ const ProductScreen = (props) => {
 
 
   if (getLoading) {
-    return (<View>
-      <Text>
-        Loading...
-      </Text>
-    </View>)
+    return <Spinner />;
   }
 
   return (

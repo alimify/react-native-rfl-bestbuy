@@ -1,10 +1,12 @@
 import React from "react";
-import { StyleSheet, View, Image, FlatList, SafeAreaView } from "react-native";
+import { StyleSheet, View, Image,Text } from "react-native";
 import DefaultStyles from '../../constants/DefaultStyles'
 import Colors from "../../constants/Colors";
-import Text from "../helpers/Text";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import {withNavigation} from 'react-navigation'
 
 const FlashItem = props => {
+
   return (
     <View style={styles.itemContainer}>
       <View style={styles.itemTextContainer}>
@@ -34,6 +36,9 @@ const HomeFlashSale = props => {
     }
 
   return (
+    <TouchableOpacity onPress={() => {
+      props.navigation.navigate('FlashSales')
+    }}>
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Flash Sale</Text>
@@ -61,7 +66,8 @@ const HomeFlashSale = props => {
           )
         })}
       </View>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -136,4 +142,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeFlashSale;
+export default withNavigation(HomeFlashSale);

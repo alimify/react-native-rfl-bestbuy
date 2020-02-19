@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { inject, observer } from "mobx-react";
 import { StyleSheet, View, ScrollView, Image } from 'react-native';
 import Text from "../components/helpers/Text";
+import Spinner from "../components/helpers/Spinner";
 
 
 import SiderBarItem from '../components/category/SideBarItem'
@@ -28,11 +29,7 @@ const CategoryScreen = props => {
   },[common,setLoading])
 
   if (getLoading) {
-    return (
-      <View>
-        <Text>Loading...</Text>
-      </View>
-    );
+    return <Spinner/>
   }
 
 

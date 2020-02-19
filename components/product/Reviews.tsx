@@ -33,8 +33,6 @@ const Review = props => {
                         <TouchableOpacity onPress={() => props.likeDislike(props.review.id, 'dislike')}>
                             <Text>Dislike ({Array.isArray(dislikes) ? dislikes.length : 0})</Text>
                         </TouchableOpacity>
-
-                        {/* <Text>Comment</Text> */}
                     </View>
                 </View>
             </View>
@@ -91,7 +89,7 @@ const Reviews = props => {
         <View style={styles.container}>
             <View style={styles.titleContainer}>
                 <Text style={styles.recentTitle}>Recent Reviews ({reviews.length})</Text>
-                <TouchableOpacity onPress={() => props.navigation.navigate('Reviews', { product: product})}>
+                <TouchableOpacity onPress={() => props.navigation.navigate('Reviews', { productId: product.id})}>
                     <Text style={styles.reviewText}>All Reviews ></Text>
                 </TouchableOpacity>
             </View>

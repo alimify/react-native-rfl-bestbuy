@@ -9,16 +9,25 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.baseColor4,
         color: Colors.baseColor8
     },
+    fontColor1: {
+        color: Colors.fontColor1
+    },
     flatListRow: {
         flexGrow: 1,
         justifyContent: 'space-between',
         flexBasis: '50%',
         flexWrap: 'wrap'
     },
+    flex: {
+        flex: 1
+    },
     flexContainer: {
-        flex: 1,
         flexWrap: 'wrap',
         flexDirection: 'row'
+    },
+    stickyBottom: {
+        position: 'absolute',
+        bottom: 0
     },
     w20: {
         width: '20%'
@@ -144,6 +153,21 @@ const styles = StyleSheet.create({
     },
     pv5: {
         paddingVertical: 5
+    },
+    m1: {
+        margin: 1
+    },
+    m2: {
+        margin: 2
+    },
+    m3: {
+        margin: 3
+    },
+    m4: {
+        margin: 4
+    },
+    m5: {
+        margin: 5
     },
 });
 

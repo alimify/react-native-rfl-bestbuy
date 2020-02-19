@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView, Image } from "react-native";
 import storage from '../services/asyncStorage';
 import { inject, observer } from "mobx-react";
 import Text from "../components/helpers/Text";
-
+import Spinner from "../components/helpers/Spinner"
 
 const StartUpScreen = props => {
 
@@ -34,11 +34,7 @@ const StartUpScreen = props => {
     }
     
 
-    return (
-        <View>
-            <Text>Loading...</Text>
-        </View>
-    );
+    return <Spinner/>;
 };
 
 const styles = StyleSheet.create({});

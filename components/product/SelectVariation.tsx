@@ -28,21 +28,20 @@ const PriceText = props => {
 const VariationModal = (props) => {
 
   const colors = props.product.colors,
-    sizeExist = props.product.colors.length > 0 && props.product.colors[props.getColorKey],
+    sizeExist = (colors.length-1) >= props.getColorKey,
     sizes = sizeExist ? props.product.colors[props.getColorKey].sizes : []
   
   
   useEffect(() => {
-    if (colors.length > 0 && colors[props.getColorKey]) {
+    if ((colors.length-1) >= props.getColorKey) {
       props.setColorId(colors[props.getColorKey].id)
     }
 
-    if (sizeExist && sizes[props.getSizeKey]) {
+    if ((sizes.length-1) >= props.getSizeKey) {
       props.setSizeId(sizes[props.getSizeKey].id)
     }
 
   },[props,sizes,colors,sizeExist])
-
 
 
   return (
@@ -189,7 +188,6 @@ const SelectVariation = props => {
 
 
   };
-
 
 
 
