@@ -65,7 +65,8 @@ const CartScreen = props => {
     const { shop } = props.store,
         [getLoading, setLoading] = useState(false),
         [getSelected, setSelected] = useState(''),
-        [getTermCheck,setTermCheck] = useState(false)
+        [getTermCheck, setTermCheck] = useState(false),
+        [getSomeError,setSomeError] = useState(false)
 
     useEffect(() => {
 
@@ -85,23 +86,11 @@ const CartScreen = props => {
         return <Spinner />;
     }
 
-    const shipments = shop.CART ? shop.CART.groupByShippingTime : false
 
-    if (!shipments) {
+    if (!shop.CART) {
         return (<View><Text>
-            No products added to cart !
+            There nothing to continue !
     </Text></View>)
-    }
-
-
-    const removeItem = async (product_code) => {
-        setLoading(true)
-        await shop.fetchRemoveFromCart({
-            product_code: product_code
-        })
-        await shop.fetchCart()
-        setLoading(false)
-
     }
 
     const PaymentsGateway = [
@@ -112,18 +101,31 @@ const CartScreen = props => {
         {
             value: 'debitcredit',
             title: 'Debit or Credit Card '
-        },
-        {
-            value: 'cash_on_delivery',
-            title: 'Cash on Delivery '
         }
     ];
+
+    if (!shop.CART.paymentFirst) {
+        PaymentsGateway.push({
+            value: 'cash_on_delivery',
+            title: 'Cash on Delivery '
+        }) 
+    }
 
 
 
     return (
         <View style={DefaultStyles.flex}>
             <ScrollView style={DefaultStyles.p5}>
+
+                {
+                    getSomeError ? (<View>
+                        <Text style={{color:'red'}}>Please check, there is something error..</Text>
+                    </View>) : (
+                            <View>
+                                
+                            </View>
+                    )
+                }
                 {PaymentsGateway.map((item, key) => {
                     return <Item item={item} getSelected={getSelected} setSelected={setSelected} key={key}/>
                 })}
@@ -152,11 +154,25 @@ const CartScreen = props => {
                     <Text>Back</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => {
-                    props.navigation.dispatch(StackActions.reset({
-                        index: 0,
-                        actions: [NavigationActions.navigate({ routeName: 'CartSummary'})]
-                   }))
+                <TouchableOpacity onPress={async () => {
+                    const hasError = !(getSelected.length > 2) || !getTermCheck
+                    await setSomeError(hasError)
+
+                    if (!hasError) {
+                        await shop.fetchStorePaymentMethod({
+                            term_check: getTermCheck,
+                            payment_method: getSelected
+                        })
+
+                        if (shop.STORE_PAYMENT_METHOD) {
+                            props.navigation.dispatch(StackActions.reset({
+                                index: 0,
+                                actions: [NavigationActions.navigate({ routeName: 'CartReview' })]
+                            }))
+                        }
+
+                    }
+
                 }}>
                     <Text>Next</Text>
                 </TouchableOpacity>

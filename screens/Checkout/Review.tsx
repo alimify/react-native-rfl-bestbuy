@@ -58,7 +58,19 @@ const CartItem = props => {
 const CartScreen = props => {
 
     const { shop } = props.store,
-        [getLoading, setLoading] = useState(false)
+        [getLoading, setLoading] = useState(false),
+        paymentMethod = (data) => {
+            if (data) {
+                if (data.payment_method === 'cash_on_delivery') {
+                    return 'Cash On Delivery'
+                } else if (data.payment_method === 'mobilebanking') {
+                    return 'Mobile Banking'
+                } else if (data.payment_method === 'debitcredit') {
+                    return 'Debit or Credit Card'
+                }
+            }
+            return ''
+        }
 
     useEffect(() => {
 
@@ -66,6 +78,8 @@ const CartScreen = props => {
         const loadData = async (shop) => {
             setLoading(true)
             await shop.fetchCart();
+            await shop.fetchCheckoutUserDetails({})
+            await shop.fetchCheckoutUserPaymentMethod({})
             setLoading(false)
         }
 
@@ -86,18 +100,6 @@ const CartScreen = props => {
     </Text></View>)
     }
 
-
-    const removeItem = async (product_code) => {
-        setLoading(true)
-        await shop.fetchRemoveFromCart({
-            product_code: product_code
-        })
-        await shop.fetchCart()
-        setLoading(false)
-
-    }
-
-
     return (
         <View style={DefaultStyles.flex}>
             <ScrollView style={DefaultStyles.p5}>
@@ -107,21 +109,69 @@ const CartScreen = props => {
                             <Text>Time :  {shipment.timeFrame}, Delivery Charge : {shipment.delivert_charge}</Text>
                             <View>
                                 {Object.values(shipment.items).map((item, key) => {
-                                    return <CartItem key={key} item={item} removeItem={removeItem} />
+                                    return <CartItem key={key} item={item} />
                                 })}
                             </View>
                         </View>
                     )
                 })}
+
+                <View style={{ ...DefaultStyles.m5, ...DefaultStyles.p5 }}>
+                    <View style={DefaultStyles.flexContainer}>
+                        <Text style={DefaultStyles.w45}>Total Products:</Text>
+                        <Text style={DefaultStyles.w45}>$ {shop.CART ? shop.CART.totalqty.toLocaleString() : '0'}</Text>
+                    </View>
+
+                    <View style={DefaultStyles.flexContainer}>
+                        <Text style={DefaultStyles.w45}>Total Price:</Text>
+                        <Text style={DefaultStyles.w45}>$ {shop.CART ? shop.CART.totalprice.toLocaleString() : '0'}</Text>
+                    </View>
+
+                    <View style={DefaultStyles.flexContainer}>
+                        <Text style={DefaultStyles.w45}>Discount Price:</Text>
+                        <Text style={DefaultStyles.w45}>$ {shop.CART ? shop.CART.discount.toLocaleString() : '0'}</Text>
+                    </View>
+                    
+                    <View style={DefaultStyles.flexContainer}>
+                        <Text style={DefaultStyles.w45}>Delivery Charge ({shop.CHECK_OUT_USER_DETAILS.division}):</Text>
+                        <Text style={DefaultStyles.w45}>$ {shop.CHECK_OUT_USER_DETAILS ? shop.CHECK_OUT_USER_DETAILS.deliveryfee.toLocaleString() : '0'}</Text>
+                    </View>
+                    <View style={DefaultStyles.flexContainer}>
+                        <Text style={DefaultStyles.w45}>Payment Method:	</Text>
+                        <Text style={DefaultStyles.w45}> {shop.CHECK_OUT_USER_PAYMENT_METHOD ? paymentMethod(shop.CHECK_OUT_USER_PAYMENT_METHOD) : ''}</Text>
+                    </View>
+                    <View style={DefaultStyles.flexContainer}>
+                        <Text style={DefaultStyles.w45}>Grand Total:</Text>
+                        <Text style={DefaultStyles.w45}>$ {(shop.CHECK_OUT_USER_PAYMENT_METHOD.grand_total - shop.CART.discount).toLocaleString()}</Text>
+                    </View>
+                </View>
+
+
             </ScrollView>
             <View style={{ ...DefaultStyles.stickyBottom, ...DefaultStyles.flexContainer }}>
-
+                <Text>{JSON.stringify(shop.PAY_NOW)}</Text>
                 <TouchableOpacity>
                     <Text>Back</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => {
-                    props.navigation.navigate('CartSummary')
+                <TouchableOpacity onPress={async () => {
+
+                    await setLoading(true)
+                    await shop.fetchPayNow({})
+
+                    if (shop.PAY_NOW && shop.PAY_NOW.success) {
+                        await setLoading(false)
+
+                        props.navigation.navigate('CartSummary', {
+                            order_id: shop.PAY_NOW.result.id,
+                            random_code: shop.PAY_NOW.result.order_random,
+                            secret_key: shop.PAY_NOW.result.secret_key
+                        })
+                    }
+
+                    await setLoading(false)
+
+
                 }}>
                     <Text>Pay Now</Text>
                 </TouchableOpacity>
