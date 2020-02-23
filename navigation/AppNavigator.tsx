@@ -5,7 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 import { createDrawerNavigator } from 'react-navigation-drawer'
-import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { AntDesign, MaterialIcons, Ionicons, Feather, FontAwesome } from '@expo/vector-icons'
 
 import StartUpScreen from '../screens/StartUpScreen'
 import HomeScreen from '../screens/HomeScreen'
@@ -94,7 +94,7 @@ const tabScreenConfig = {
         screen: MainNavigator,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-                return <AntDesign name="home" size={30} />;
+                return <Feather name="home" size={20} style={{ marginTop: 5}} />;
             }
         }
     },
@@ -102,8 +102,7 @@ const tabScreenConfig = {
         screen: CategoryScreen,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-
-                return <MaterialIcons name="dashboard" size={30} />
+                return <Ionicons name="md-list" size={26} />
             },
             tabBarColor: 'white',
             tabBarLabel: 'Category'
@@ -114,7 +113,7 @@ const tabScreenConfig = {
         screen: CartScreen,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-                return <AntDesign name="shoppingcart" size={30} />
+                return <Ionicons name="md-cart" size={26} />
             },
             tabBarColor: 'gray',
             tabBarVisible: true,
@@ -128,7 +127,7 @@ const tabScreenConfig = {
         screen: UserIndex,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-                return <AntDesign name="user" size={30} />
+                return <FontAwesome name="users" size={20} />
             },
             tabBarColor: 'gray'
         }
