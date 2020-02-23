@@ -149,8 +149,8 @@ const HeaderSearchInput = props => {
     <TouchableOpacity style={{ borderRadius: 20, marginLeft: -25, backgroundColor: '#f7f6f2' }} activeOpacity={1} onPress={() => {
       NavigationService.navigate('Search', {})
     }}>
-      <View pointerEvents="none" style={{ flexDirection: 'row', width: 300, marginLeft: 5, marginTop: 3 }}>
-        <Ionicons style={{ color: '#b4b5b3' }} name="ios-search" size={32} />
+      <View pointerEvents="none" style={{ flexDirection: 'row', width: 300, marginLeft: -5, marginTop: 3 }}>
+        <Ionicons style={{ color: '#b4b5b3' }} name="ios-search" size={24} />
       </View>
     </TouchableOpacity>
   )
@@ -159,7 +159,7 @@ const HeaderSearchInput = props => {
 
 const HeaderButtonComponent = props => {
   return (
-    <HeaderButton {...props} IconComponent={Ionicons} iconSize={23} color="gray" />
+    <HeaderButton {...props} IconComponent={Ionicons} iconSize={40} color="gray" />
   )
 }
 

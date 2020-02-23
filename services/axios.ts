@@ -28,7 +28,7 @@ class axioInstance {
     this.self_token = self_token
   }
 
-  async get(uri, info) {
+  async get(uri, info = {}) {
     this.params = info
     this.method = 'get'
     const params = this.mergeParams()
@@ -41,7 +41,7 @@ class axioInstance {
     return await this.axios.get(uri, params)
   }
 
-  async post(uri, info) {
+  async post(uri, info = {}) {
     this.params = info
     this.method = 'post'
     const params = this.mergeParams()

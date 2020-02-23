@@ -5,7 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 import { createDrawerNavigator } from 'react-navigation-drawer'
-import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { AntDesign, MaterialIcons, Ionicons, Feather, FontAwesome } from '@expo/vector-icons'
 
 import StartUpScreen from '../screens/StartUpScreen'
 import HomeScreen from '../screens/HomeScreen'
@@ -94,7 +94,11 @@ const tabScreenConfig = {
         screen: MainNavigator,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
+<<<<<<< HEAD
                 return <AntDesign name="home" size={20} />;
+=======
+                return <Feather name="home" size={20} style={{ marginTop: 5}} />;
+>>>>>>> 7f302ac071165b368fecc5f55f7484b3102f6a15
             }
         }
     },
@@ -102,8 +106,12 @@ const tabScreenConfig = {
         screen: CategoryScreen,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
+<<<<<<< HEAD
 
                 return <MaterialIcons name="dashboard" size={20} />
+=======
+                return <Ionicons name="md-list" size={26} />
+>>>>>>> 7f302ac071165b368fecc5f55f7484b3102f6a15
             },
             tabBarColor: 'white',
             tabBarLabel: 'Category'
@@ -114,7 +122,11 @@ const tabScreenConfig = {
         screen: CartScreen,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
+<<<<<<< HEAD
                 return <AntDesign name="shoppingcart" size={20} />
+=======
+                return <Ionicons name="md-cart" size={26} />
+>>>>>>> 7f302ac071165b368fecc5f55f7484b3102f6a15
             },
             tabBarColor: 'gray',
             tabBarVisible: true,
@@ -128,7 +140,11 @@ const tabScreenConfig = {
         screen: UserIndex,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
+<<<<<<< HEAD
                 return <AntDesign name="user" size={20} />
+=======
+                return <FontAwesome name="users" size={20} />
+>>>>>>> 7f302ac071165b368fecc5f55f7484b3102f6a15
             },
             tabBarColor: 'gray'
         }

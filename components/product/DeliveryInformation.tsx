@@ -67,7 +67,7 @@ const DeliveryLocation = props => {
           <View>
             <Text>Thana</Text>
             <Picker
-              selectedValue={'js'}
+              selectedValue={getThana}
               style={{ height: 50, width: 200 }}
               onValueChange={(itemValue, itemIndex) => {
                 setThana(itemValue)
