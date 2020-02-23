@@ -47,13 +47,16 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: 'bold',
+        fontSize:18,
+        margin:10
 
     },
     moreText: {
         fontStyle: 'italic',
         fontWeight: '500',
-        color: Colors.baseColor7
-    }
+        color: Colors.baseColor7,
+        fontSize:80
+    },
 });
 
 export default Recommended;

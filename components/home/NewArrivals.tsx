@@ -12,7 +12,9 @@ const PriceText = props => {
     <Text style={styles.itemPrice}>$ {props.product.product_price_now}</Text>
   ) : (
     <View>
-      <Text style={styles.itemPrice}>$ {props.product.product_price_now}</Text>
+      <Text style={styles.itemPrice}>
+        $ {props.product.product_price_now}
+      </Text>
       <Text style={styles.itemRegularPrice}>
         $ {props.product.local_selling_price}
       </Text>
@@ -93,9 +95,11 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
   },
   titleMore: {
+    fontFamily: 'open-sans',
     fontStyle: 'italic',
-    fontWeight: '500',
-    color: Colors.baseColor7
+    fontWeight: 'bold',
+    color: Colors.baseColor7,
+    
   },
   itemContainer: {
     width: 100,

@@ -94,7 +94,7 @@ const tabScreenConfig = {
         screen: MainNavigator,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-                return <AntDesign name="home" size={30} />;
+                return <AntDesign name="home" size={20} />;
             }
         }
     },
@@ -103,7 +103,7 @@ const tabScreenConfig = {
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
 
-                return <MaterialIcons name="dashboard" size={30} />
+                return <MaterialIcons name="dashboard" size={20} />
             },
             tabBarColor: 'white',
             tabBarLabel: 'Category'
@@ -114,7 +114,7 @@ const tabScreenConfig = {
         screen: CartScreen,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-                return <AntDesign name="shoppingcart" size={30} />
+                return <AntDesign name="shoppingcart" size={20} />
             },
             tabBarColor: 'gray',
             tabBarVisible: true,
@@ -128,7 +128,7 @@ const tabScreenConfig = {
         screen: UserIndex,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-                return <AntDesign name="user" size={30} />
+                return <AntDesign name="user" size={20} />
             },
             tabBarColor: 'gray'
         }

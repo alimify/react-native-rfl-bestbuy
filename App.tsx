@@ -12,7 +12,7 @@ const fetchFonts = () => {
 	return Font.loadAsync({
 		'open-sans': require('./assets/fonts/OpenSansCondensed-Light.ttf'),
 		'open-sans-bold': require('./assets/fonts/OpenSansCondensed-Bold.ttf'),
-		'open-sans-ligh-italic': require('./assets/fonts/OpenSansCondensed-LightItalic.ttf'),
+		'open-sans-light-italic': require('./assets/fonts/OpenSansCondensed-LightItalic.ttf'),
 	});
 }
 
