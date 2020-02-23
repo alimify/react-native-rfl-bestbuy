@@ -22,8 +22,9 @@ const CategorySideBarItem = props => {
               />
             </View>
             <View>
-              <Text style={styles.sideBarItemTitle}>
-                {props.category.name.substring(0, 8)}
+              <Text textBreakStrategy={'simple'} style={styles.sideBarItemTitle}>
+                {props.category.name}
+                {/* {props.category.name.substring(0, 15)} */}
               </Text>
             </View>
           </View>
@@ -37,11 +38,17 @@ const CategorySideBarItem = props => {
 const styles = StyleSheet.create({
 
     sideBarItemContainer: {
-        backgroundColor: '#ebebeb',
-        padding: 10,
+        backgroundColor: '#E2E2E2',        
+        width: 100,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        textAlign:'center',
         marginBottom: 1,
-        paddingBottom: 1,
-        paddingTop:5
+        paddingBottom: 5,
+        paddingTop:0,
+        flexWrap: 'wrap'
     },
 
     sideBarItemImageContainer: {
@@ -49,22 +56,25 @@ const styles = StyleSheet.create({
     },
 
     sideBarItemImage: {
-        height: 70,
-        width: 70
+        height: 40,
+        width: 40
     },
 
     sideBarItemTitleContainer: {
-        // flex: 1,
-        justifyContent: 'center',
-        alignContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
-        textAlign:'center'
-    },
+      // flex: 1,
+      justifyContent: 'center',
+      alignContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center',
+      textAlign:'center'
+  },
 
     sideBarItemTitle: {
+        fontFamily: 'latoregular',   
+        textAlign: 'center', 
         fontWeight: '900',
-        fontSize: 20
+        color: '#000000',
+        fontSize: 14
     }
 })
 
