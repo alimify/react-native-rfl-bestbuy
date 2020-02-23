@@ -94,11 +94,8 @@ const tabScreenConfig = {
         screen: MainNavigator,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-<<<<<<< HEAD
-                return <AntDesign name="home" size={20} />;
-=======
+
                 return <Feather name="home" size={20} style={{ marginTop: 5}} />;
->>>>>>> 7f302ac071165b368fecc5f55f7484b3102f6a15
             }
         }
     },
@@ -106,12 +103,7 @@ const tabScreenConfig = {
         screen: CategoryScreen,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-<<<<<<< HEAD
-
-                return <MaterialIcons name="dashboard" size={20} />
-=======
                 return <Ionicons name="md-list" size={26} />
->>>>>>> 7f302ac071165b368fecc5f55f7484b3102f6a15
             },
             tabBarColor: 'white',
             tabBarLabel: 'Category'
@@ -122,11 +114,7 @@ const tabScreenConfig = {
         screen: CartScreen,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-<<<<<<< HEAD
-                return <AntDesign name="shoppingcart" size={20} />
-=======
                 return <Ionicons name="md-cart" size={26} />
->>>>>>> 7f302ac071165b368fecc5f55f7484b3102f6a15
             },
             tabBarColor: 'gray',
             tabBarVisible: true,
@@ -140,11 +128,7 @@ const tabScreenConfig = {
         screen: UserIndex,
         navigationOptions: {
             tabBarIcon: (tabInfo) => {
-<<<<<<< HEAD
-                return <AntDesign name="user" size={20} />
-=======
                 return <FontAwesome name="users" size={20} />
->>>>>>> 7f302ac071165b368fecc5f55f7484b3102f6a15
             },
             tabBarColor: 'gray'
         }
