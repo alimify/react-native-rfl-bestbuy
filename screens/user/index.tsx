@@ -1,73 +1,79 @@
 import React from "react";
 import {
-    StyleSheet,
-    Text,
-    View,
-    ScrollView,
-    Image,
-    Button
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Image,
+  Button
 } from "react-native";
 import { withNavigation } from 'react-navigation'
 import { inject, observer } from "mobx-react";
 import DefaultStyles from '../../constants/DefaultStyles'
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const UserIndex = props => {
 
-    const { user } = props.store
-    
-    if (!user.ACCESS_TOKEN && !user.ACCOUNT) {
-       return props.navigation.navigate("Login");
-    } else {
-        
+  const { user } = props.store
+
+  if (!user.ACCESS_TOKEN && !user.ACCOUNT) {
+    return props.navigation.navigate("Login");
+  } else {
+
 
 
     return (
       <ScrollView>
-       
-        <View style={DefaultStyles.flexContainer}>
-          <View>
-            <Text>Total Orders</Text>
-            <Text>{user.ACCOUNT.totalOrders}</Text>
-          </View>
+        <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', alignItems: 'center', paddingVertical: 100 }}>
+          <TouchableOpacity style={{ ...DefaultStyles.p5, ...DefaultStyles.m5 }}
+            onPress={() => {
+              props.navigation.navigate('UserAccount')
+            }}
+          >
+            <Text>Account</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{ ...DefaultStyles.p5, ...DefaultStyles.m5 }} onPress={() => {
+            props.navigation.navigate('UserAccountUpdate')
+          }}>
+            <Text>Edit Account</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{ ...DefaultStyles.p5, ...DefaultStyles.m5 }} onPress={() => {
+            props.navigation.navigate('UserAccountOrderHistory')
+          }}>
+            <Text>History</Text>
+          </TouchableOpacity>
 
-          <View>
-            <Text>Pending Orders</Text>
-            <Text>{user.ACCOUNT.totalPending}</Text>
-          </View>
+          <TouchableOpacity style={{ ...DefaultStyles.p5, ...DefaultStyles.m5 }} onPress={() => {
+            props.navigation.navigate('UserRewardPoint')
+          }}>
+            <Text>Rewards Point</Text>
+          </TouchableOpacity>
 
-          <View>
-            <Text>Complete Orders</Text>
-            <Text>{user.ACCOUNT.totalComplete}</Text>
-          </View>
+          <TouchableOpacity style={{ ...DefaultStyles.p5, ...DefaultStyles.m5 }} onPress={() => {
+            props.navigation.navigate('UserReview')
+          }}>
+            <Text>Review</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={{ ...DefaultStyles.p5, ...DefaultStyles.m5 }} onPress={() => {
+            props.navigation.navigate('UserCancellation')
+          }}>
+            <Text>Cancellation</Text>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity style={{ ...DefaultStyles.p5, ...DefaultStyles.m5 }} onPress={() => {
+
+          }}>
+            <Text>Logout</Text>
+          </TouchableOpacity>
+
         </View>
-
-        <View style={DefaultStyles.flexContainer}>
-          <View>
-            <Text>Total Purchase</Text>
-            <Text>{user.ACCOUNT.totalSpend}</Text>
-          </View>
-
-          <View>
-            <Text>Earned Points</Text>
-            <Text>{user.ACCOUNT.user.reward_points}</Text>
-          </View>
-
-        </View>
-      
-        <View>
-          <Text>Account Details</Text>
-          <View style={DefaultStyles.flexContainer}>
-            <Text>Full Name:</Text>
-            <Text>Admin</Text>
-          </View>
-        </View>
-
-
       </ScrollView>
     );
 
 
-    }
+  }
 
 
 };
@@ -75,4 +81,4 @@ const UserIndex = props => {
 const styles = StyleSheet.create({});
 
 
-export default inject("store")(observer(withNavigation(UserIndex)));
+export default inject("store")(observer(withNavigation(UserIndex)))
