@@ -1,80 +1,73 @@
 import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
+import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
+import Spinner from "../components/helpers/Spinner";
+import { Ionicons } from "@expo/vector-icons";
 import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import Spinner from "../components/helpers/Spinner"
-import { Ionicons } from '@expo/vector-icons'
-import { HeaderButtons, HeaderButton, Item } from "react-navigation-header-buttons";
+  HeaderButtons,
+  HeaderButton,
+  Item
+} from "react-navigation-header-buttons";
 import Sliders from "../components/home/SliderBox";
 import FlashSale from "../components/home/FlashSale";
 import NewArrivals from "../components/home/NewArrivals";
-import JustForYou from '../components/home/JustForYou'
+import JustForYou from "../components/home/JustForYou";
 import ProductSet from "../components/helpers/ProductSet";
 
+import NavigationService from "../navigation/NavigationService";
 
-import NavigationService from '../navigation/NavigationService'
-
-
-const HomeScreen = (props) => {
-
-
+const HomeScreen = props => {
   const { home } = props.store,
-    [getLoading, setLoading] = useState(true)
-
+    [getLoading, setLoading] = useState(true);
 
   useEffect(() => {
-
-
-    const loadData = async (home) => {
+    const loadData = async home => {
       await home.fetchIndex();
-
 
       await home.fetchJustForYou({
         limit: 8
-      })
+      });
 
       await home.fetchBestBuyChoices({
         limit: 8
-      })
+      });
 
-      setLoading(false)
-    }
+      setLoading(false);
+    };
 
-    loadData(home)
-
-
-  }, [home,setLoading])
-
+    loadData(home);
+  }, [home, setLoading]);
 
   if (getLoading) {
     return <Spinner />;
   }
 
+  const CategoryOneProducts =
+      home.INDEX &&
+      home.INDEX.category_one &&
+      home.INDEX.category_one.category_products
+        ? home.INDEX.category_one.category_products.map(item => item.product)
+        : false,
+    CategoryTwoProducts =
+      home.INDEX &&
+      home.INDEX.category_two &&
+      home.INDEX.category_two.category_products
+        ? home.INDEX.category_two.category_products.map(item => item.product)
+        : false,
+    CategoryThreeProducts =
+      home.INDEX &&
+      home.INDEX.category_three &&
+      home.INDEX.category_three.category_products
+        ? home.INDEX.category_three.category_products.map(item => item.product)
+        : false;
 
-
-
-  const CategoryOneProducts = home.INDEX && home.INDEX.category_one && home.INDEX.category_one.category_products
-    ? home.INDEX.category_one.category_products.map(item => item.product)
-    : false,
-    CategoryTwoProducts = home.INDEX && home.INDEX.category_two && home.INDEX.category_two.category_products
-      ? home.INDEX.category_two.category_products.map(item => item.product)
-      : false,
-    CategoryThreeProducts = home.INDEX && home.INDEX.category_three && home.INDEX.category_three.category_products
-      ? home.INDEX.category_three.category_products.map(item => item.product)
-      : false;
-  
-  const deleteCategoryProducts = (category) => {
+  const deleteCategoryProducts = category => {
     if (category.hasOwnProperty("category_products")) {
       delete category.category_products;
-      return category
+      return category;
     }
-    return category
-  }
-  
+    return category;
+  };
 
   return (
     <ScrollView>
@@ -140,30 +133,40 @@ const HomeScreen = (props) => {
   );
 };
 
-
-
-
 const HeaderSearchInput = props => {
-
   return (
-    <TouchableOpacity style={{ borderRadius: 20, marginLeft: -25, backgroundColor: '#f7f6f2' }} activeOpacity={1} onPress={() => {
-      NavigationService.navigate('Search', {})
-    }}>
-      <View pointerEvents="none" style={{ flexDirection: 'row', width: 300, marginLeft: -5, marginTop: 3 }}>
-        <Ionicons style={{ color: '#b4b5b3' }} name="ios-search" size={24} />
+    <TouchableOpacity
+      style={{ borderRadius: 20, marginLeft: -25, backgroundColor: "#f7f6f2" }}
+      activeOpacity={1}
+      onPress={() => {
+        NavigationService.navigate("Search", {});
+      }}
+    >
+      <View
+        pointerEvents="none"
+        style={{
+          flexDirection: "row",
+          width: 300,
+          marginLeft: -5,
+          marginTop: 3
+        }}
+      >
+        <Ionicons style={{ color: "#b4b5b3" }} name="ios-search" size={24} />
       </View>
     </TouchableOpacity>
-  )
-}
-
+  );
+};
 
 const HeaderButtonComponent = props => {
   return (
-    <HeaderButton {...props} IconComponent={Ionicons} iconSize={40} color="gray" />
-  )
-}
-
-
+    <HeaderButton
+      {...props}
+      IconComponent={Ionicons}
+      iconSize={40}
+      color="gray"
+    />
+  );
+};
 
 HomeScreen.navigationOptions = navData => {
   return {
@@ -174,7 +177,7 @@ HomeScreen.navigationOptions = navData => {
           title="Menu"
           iconName="ios-menu"
           onPress={() => {
-            navData.navigation.toggleDrawer()
+            navData.navigation.toggleDrawer();
           }}
         />
       </HeaderButtons>
@@ -182,11 +185,6 @@ HomeScreen.navigationOptions = navData => {
   };
 };
 
-
-
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
 
 export default inject("store")(observer(HomeScreen));
-

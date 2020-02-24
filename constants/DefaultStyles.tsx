@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
     w30: {
         width: '30%'
     },
+    w33: {
+        width: '33%'
+    },
     w35: {
         width: '35%'
     },

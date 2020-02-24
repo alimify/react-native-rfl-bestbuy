@@ -29,7 +29,6 @@ import CartReviewScreen from "../screens/Checkout/Review";
 import CartSummeryScreen from "../screens/Checkout/Summary";
 
 import SearchScreen from "../screens/SearchScreen";
-import UserIndex from "../screens/user/index";
 import LoginScreen from "../screens/auth/Login";
 import RegisterScreen from "../screens/auth/Register";
 import ReviewScreen from "../screens/product/ReviewScreen";
@@ -38,6 +37,15 @@ import RecommendedScreen from "../screens/pages/Recommended";
 import JustForYouScreen from "../screens/pages/JustForYou";
 import FlashSaleScreen from "../screens/pages/FlashSales";
 import NewArrivalScreen from "../screens/pages/NewArrivals";
+
+/*User Account*/
+import UserIndex from "../screens/user/index";
+import UserAccount from "../screens/user/Account";
+import UserAccountUpdate from "../screens/user/AccountUpdate";
+import UserAccountOrderHistory from "../screens/user/HistoryScreen";
+import UserRewardPointScreen from "../screens/user/RewardPoints";
+import UserReview from "../screens/user/ReviewScreen";
+import UserCancellation from "../screens/user/Cancellation";
 
 const navigationOptions = {
   //   title: "RflbestbuyRFL",
@@ -69,7 +77,15 @@ const MainNavigator = createStackNavigator({
   Recommended: RecommendedScreen,
   JustForYou: JustForYouScreen,
   FlashSales: FlashSaleScreen,
-  NewArrivals: NewArrivalScreen
+  NewArrivals: NewArrivalScreen,
+
+  ///UserAccount
+  UserAccount: UserAccount,
+  UserAccountUpdate: UserAccountUpdate,
+  UserAccountOrderHistory: UserAccountOrderHistory,
+  UserRewardPoint: UserRewardPointScreen,
+  UserReview: UserReview,
+  UserCancellation: UserCancellation
 });
 
 MainNavigator.navigationOptions = ({ navigation }) => {

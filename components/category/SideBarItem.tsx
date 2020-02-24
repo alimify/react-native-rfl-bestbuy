@@ -38,14 +38,16 @@ const CategorySideBarItem = props => {
 const styles = StyleSheet.create({
 
     sideBarItemContainer: {
-        backgroundColor: '#E2E2E2',        
-        width: 100,
+        backgroundColor: '#EFEFEF',        
+        width: 80,
         justifyContent: 'center',
         alignContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
         textAlign:'center',
-        marginBottom: 1,
+        marginBottom: 2,
+        borderBottomWidth: 1,
+        borderBottomColor: 'red',
         paddingBottom: 5,
         paddingTop:0,
         flexWrap: 'wrap'
@@ -70,11 +72,11 @@ const styles = StyleSheet.create({
   },
 
     sideBarItemTitle: {
-        fontFamily: 'latoregular',   
+        fontFamily: 'latoregular',
         textAlign: 'center', 
         fontWeight: '900',
         color: '#000000',
-        fontSize: 14
+        fontSize: 11
     }
 })
 

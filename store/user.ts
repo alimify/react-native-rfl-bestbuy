@@ -16,6 +16,8 @@ class User {
   ACCESS_TOKEN = false;
   PASSWORD_RESET_REQUEST = false;
   PASSWORD_RESET = false;
+  CONVERT_RP_TO_TK = false;
+  REWARD_TK_HISTORY = false;
 
   //SETTERS
   setLogin(data) {
@@ -68,6 +70,14 @@ class User {
 
   setPasswordReset(data) {
     this.PASSWORD_RESET = data;
+  }
+
+  setConvertRpToTk(data) {
+    this.CONVERT_RP_TO_TK = data
+  }
+
+  setRewardTkHistory(data) {
+    this.REWARD_TK_HISTORY = data
   }
 
   ///GETTERS
@@ -141,6 +151,20 @@ class User {
     const response = await axios.post("api/auth/passwordReset", info);
 
     return this.setPasswordReset(response.data);
+  }
+
+  async fetchConvertRpToTk(info) {
+    const response = await axios.post('api/shop/convertPointToCoupon', info)
+    
+    return await this.setConvertRpToTk(response.data)
+  }
+
+  async fetchRewardTkHistory(info) {
+    const response = await axios.get('api/shop/rewardPointHistoryByUser', {
+      params: info
+    })
+
+    return await this.setRewardTkHistory(response.data)
   }
 }
 

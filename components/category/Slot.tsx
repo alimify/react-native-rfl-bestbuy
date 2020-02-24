@@ -7,15 +7,15 @@ import SlotItem from "./SlotItem";
 
 const Slot = props => {
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text textBreakStrategy={'simple'} style={styles.title}>
-          {props.category.name}
-        </Text>
+    <View style={styles.boxDesign}>
+      <View style={styles.titleBoxDesign}>
+        <Text style={styles.title}>{props.category.name}</Text>
       </View>
       <View style={DefaultStyles.flexContainer}>
         {props.category.sub_categories.map(category => (
-          <SlotItem textBreakStrategy={'simple'} key={category.id.toString()} category={category} />
+          <View key={category.id.toString()} style={DefaultStyles.w33}>
+            <SlotItem category={category} />
+          </View>
         ))}
       </View>
     </View>
@@ -23,31 +23,22 @@ const Slot = props => {
 };
 
 const styles = StyleSheet.create({
-  // container: {
-  //   fontFamily: 'latoregular',    
-  //   backgroundColor: '#F5F5F5',
-  //   justifyContent: "center",    
-  //   padding: 0
-  // },
-
-  // titleContainer: {},
-
-  // title: {
-  //   fontFamily: 'latobold',
-  //   fontWeight: "900",
-  //   fontSize: 16,
-  //   paddingHorizontal: 5,
-  //   paddingVertical: 10
-
-  // },
-
-  // slotItemsContainer: {
-  //   flexWrap: "wrap",
-  //   flexDirection: "row",
-  //   justifyContent: "space-between",
-  //   marginRight: 0,
-  //   marginLeft: 5
-  // }
+  boxDesign: {
+    paddingBottom: 20,
+    borderBottomColor: '#DDDDDD',
+    borderBottomWidth: 1
+  },
+  titleBoxDesign: {
+    paddingVertical: 5,
+    //backgroundColor: '#FFE3E3',    
+  },
+  title: {    
+    fontFamily: "open-sans",
+    fontWeight: "400",
+    fontSize: 16,
+    paddingHorizontal: 5,
+    paddingVertical: 5
+  }
 });
 
 export default Slot;
