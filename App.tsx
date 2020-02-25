@@ -10,6 +10,16 @@ import NavigationService from './navigation/NavigationService'
 
 const fetchFonts = () => {
 	return Font.loadAsync({
+    'latoblack': require('./assets/fonts/Lato-Black.ttf'),
+    'latoblackitalic': require('./assets/fonts/Lato-BlackItalic.ttf'),
+    'latobold': require('./assets/fonts/Lato-Bold.ttf'),
+    'latobolditalic': require('./assets/fonts/Lato-BoldItalic.ttf'),
+    'latoitalic': require('./assets/fonts/Lato-Italic.ttf'),
+    'latolight': require('./assets/fonts/Lato-Light.ttf'),
+    'latolightitalic': require('./assets/fonts/Lato-LightItalic.ttf'),
+    'latoregular': require('./assets/fonts/Lato-Regular.ttf'),
+    'latothin': require('./assets/fonts/Lato-Thin.ttf'),
+    'latothinitalic': require('./assets/fonts/Lato-ThinItalic.ttf'),
 		'open-sans': require('./assets/fonts/OpenSansCondensed-Light.ttf'),
 		'open-sans-bold': require('./assets/fonts/OpenSansCondensed-Bold.ttf'),
 		'open-sans-light-italic': require('./assets/fonts/OpenSansCondensed-LightItalic.ttf'),

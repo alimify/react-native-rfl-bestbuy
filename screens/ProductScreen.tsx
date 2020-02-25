@@ -1,39 +1,33 @@
-import React, { useEffect, useCallback, useState } from 'react';
-import { StyleSheet, View, ScrollView, Image } from 'react-native';
-import { withNavigation } from 'react-navigation'
+import React, { useEffect, useCallback, useState } from "react";
+import { StyleSheet, View, ScrollView, Image } from "react-native";
+import { withNavigation } from "react-navigation";
 import { inject, observer } from "mobx-react";
 import Text from "../components/helpers/Text";
 import Spinner from "../components/helpers/Spinner";
 
-import ImageSlider from '../components/product/ImageSlider'
-import SelectVariation from '../components/product/SelectVariation'
-import DeliveryInformation from '../components/product/DeliveryInformation'
-import PaymentMethod from '../components/product/PaymentMethod'
-import Reviews from '../components/product/Reviews'
-import SimilarProduct from '../components/product/SimilarProduct'
+import ImageSlider from "../components/product/ImageSlider";
+import SelectVariation from "../components/product/SelectVariation";
+import DeliveryInformation from "../components/product/DeliveryInformation";
+import PaymentMethod from "../components/product/PaymentMethod";
+import Reviews from "../components/product/Reviews";
+import SimilarProduct from "../components/product/SimilarProduct";
 
-const ProductScreen = (props) => {
-  const product = props.navigation.getParam('product'),
+const ProductScreen = props => {
+  const product = props.navigation.getParam("product"),
     { shop, user } = props.store,
-    [getLoading, setLoading] = useState(true)
-
+    [getLoading, setLoading] = useState(true);
 
   useEffect(() => {
-
-
     const ProductLoading = async (shop, product) => {
-      setLoading(true)
+      setLoading(true);
       await shop.fetchProductDetails({
         slug: product.seo_url
-      })
-      setLoading(false)
-    }
+      });
+      setLoading(false);
+    };
 
-    ProductLoading(shop, product)
-
-
-  }, [shop, product])
-
+    ProductLoading(shop, product);
+  }, [shop, product]);
 
   if (getLoading) {
     return <Spinner />;
@@ -64,39 +58,34 @@ const ProductScreen = (props) => {
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-
-  },
+  container: {},
   title: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 10,
     fontSize: 17,
     marginBottom: 10
   },
   slotContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 10,
-    borderBottomColor: '#ddd',
+    borderBottomColor: "#ddd",
     borderBottomWidth: 1
   },
   deliveryContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 10,
-    borderBottomColor: '#ddd',
+    borderBottomColor: "#ddd",
     borderBottomWidth: 1
   }
-})
-
-
+});
 
 ProductScreen.navigationOptions = navData => {
   return {
     tabBarVisible: false
-  }
-}
+  };
+};
 
-
-export default inject("store")(observer(withNavigation(ProductScreen)))
+export default inject("store")(observer(withNavigation(ProductScreen)));

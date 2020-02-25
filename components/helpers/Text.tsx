@@ -12,7 +12,7 @@ const MyText = (props) => {
 
 const styles = StyleSheet.create({
    textDesign: {
-       color: 'red',
+       color: '#555555',
        //fontFamily: 'OpenSansCondensed-Light'
    }
 });
