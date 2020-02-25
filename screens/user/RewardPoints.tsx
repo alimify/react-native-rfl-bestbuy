@@ -66,8 +66,14 @@ const UserIndex = props => {
                         }} value={getRPI.toString()} />
                         <Text>to</Text>
                         <TextInput editable={false} value={getConvertingAmount.toString()} />
-                        <TouchableOpacity onPress={() => {
-
+                        <TouchableOpacity onPress={async () => {
+                            setLoading(true)
+                            await user.fetchConvertRpToTk({
+                                point: getRPI
+                            })
+                            await user.fetchRewardTkHistory({})
+                            await user.fetchAccount()
+                            setLoading(false)
                         }}>
                             <Text>Convert</Text>
                         </TouchableOpacity>

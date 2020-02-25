@@ -25,13 +25,7 @@ const UserIndex = props => {
         return (
             <ScrollView>
                 <View>
-                    <Text>Account Details</Text>
-                    <View style={DefaultStyles.flexContainer}>
-                        <View>
-                            <Text>Full Name</Text>
-                            <TextInput />
-                        </View>
-                    </View>
+                   <Text>Review Screen</Text>
                 </View>
             </ScrollView>
         );
