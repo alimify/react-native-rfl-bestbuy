@@ -119,7 +119,9 @@ const tabScreenConfig = {
     }
   },
   Category: {
-    screen: CategoryScreen,
+    screen: createStackNavigator({
+      Category: CategoryScreen
+    }),
     navigationOptions: {
       tabBarIcon: tabInfo => {
         return <Ionicons name="md-list" size={26} />;
@@ -130,21 +132,19 @@ const tabScreenConfig = {
   },
 
   Cart: {
-    screen: CartScreen,
+    screen: createStackNavigator({
+      Cart: CartScreen
+    }),
     navigationOptions: {
       tabBarIcon: tabInfo => {
         return <Ionicons name="md-cart" size={26} />;
-      },
-      tabBarColor: "#0087FF",
-      tabBarVisible: true,
-      title: "Cart",
-      headerTitle: "Cart",
-      tabBarLabel: "Cart",
-      header: { visible: true }
+      }
     }
   },
   Account: {
-    screen: UserIndex,
+    screen: createStackNavigator({
+      Account: UserIndex
+    }),
     navigationOptions: {
       tabBarIcon: tabInfo => {
         return <FontAwesome name="users" size={20} />;

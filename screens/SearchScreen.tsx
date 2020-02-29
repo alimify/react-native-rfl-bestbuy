@@ -107,7 +107,7 @@ const HeaderSearchInput = props => {
   const [getSearchKey, setSearchKey] = useState("");
 
   return (
-    <View>
+    <View style={DefaultStyles.flexContainer}>
       <TextInput
         placeholder="I am searching for..."
         onChangeText={setSearchKey}
