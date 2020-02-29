@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
-import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
 import Spinner from "../components/helpers/Spinner";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import {
@@ -135,15 +135,24 @@ const HomeScreen = props => {
 const HeaderSearchInput = props => {
   return (
     <TouchableOpacity
-      style={styles.searchContainer}
+      style={styles.searchContainer}      
       activeOpacity={1}
       onPress={() => {
         NavigationService.navigate("Search", {});
       }}
     >
-      <View pointerEvents="none" style={styles.searchBox}>
-        <Ionicons style={styles.searchIcon} name="md-search" size={24} />
+      <View style={{flex: 1, flexDirection: 'row', width: 290}}>
+        <View style={{ width: 20}}>
+          <View pointerEvents="none" style={styles.searchBox}>
+            <Ionicons style={styles.searchIcon} name="md-search" size={20} />
+          </View>
+        </View>
+        <View style={{ marginTop: 2}}>
+          <Text style={{  color: '#b4b5b3'}}> Search... </Text>
+        </View>        
       </View>
+      
+      
     </TouchableOpacity>
   );
 };
@@ -152,10 +161,10 @@ const HeaderButtonComponent = props => {
   return (
     <HeaderButton
       {...props}
-      IconComponent={AntDesign}
+      IconComponent={Ionicons}
       iconSize={30}
       style={styles.menuPositioning}
-      color="red"
+      color="#000"
     />
   );
 };
@@ -166,8 +175,8 @@ HomeScreen.navigationOptions = navData => {
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButtonComponent}>
         <Item
-          title="Menu"          
-          iconName="menu-unfold"
+          title="Menu"
+          iconName="ios-menu"
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}
@@ -182,21 +191,21 @@ const styles = StyleSheet.create({
     marginLeft: 5
   },
   searchContainer: {
-    borderRadius: 0,
+    borderRadius: 20,
     marginLeft: -20,
-    backgroundColor: "#f1f1f1",
-    borderWidth: 2,
-    borderColor: '#DDD'
+    backgroundColor: "#EEE",
+    borderWidth: 0,
+    borderColor: "#DDD"
   },
   searchBox: {
     flexDirection: "row",
     width: 300,
-    marginLeft: -8,
-    marginTop: 3
+    marginLeft: -10,
+    marginTop: 2
   },
   searchIcon: {
     color: "#b4b5b3",
-    marginLeft: 10
+    marginLeft: 15
   }
 });
 

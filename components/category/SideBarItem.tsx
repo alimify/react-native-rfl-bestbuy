@@ -7,7 +7,7 @@ const CategorySideBarItem = props => {
     <View style={styles.fullSideBarItemContainer}>
       <TouchableOpacity
         onPress={() => {
-          // props.navigation.navigate('CategoryProduct')
+          //props.navigation.navigate('Category Product')
         }}
       >
         <View style={styles.sideBarItemContainer}>
@@ -32,17 +32,16 @@ const CategorySideBarItem = props => {
 };
 
 const styles = StyleSheet.create({
-  fullSideBarItemContainer: {  
-  },
+  fullSideBarItemContainer: {},
   sideBarItemContainer: {
-    backgroundColor: "#EFEFEF",
+    backgroundColor: "#DDD",
     width: 80,
     justifyContent: "center",
     alignContent: "center",
     alignItems: "center",
     alignSelf: "center",
     textAlign: "center",
-    marginBottom: 2,
+    marginBottom: 1,
     borderBottomWidth: 1,
     borderBottomColor: "#FFF",
     paddingBottom: 5,

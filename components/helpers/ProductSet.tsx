@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View,TouchableOpacity,Text } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 
 import ProductDesign from "../helpers/ProductDesign";
 import Colors from "../../constants/Colors";
@@ -11,7 +11,9 @@ const ProductSet = props => {
     return <View></View>;
   }
 
-  const products = props.limit ? props.products.slice(0, props.limit) : props.products;
+  const products = props.limit
+    ? props.products.slice(0, props.limit)
+    : props.products;
 
   return (
     <View style={styles.container}>
@@ -35,7 +37,10 @@ const ProductSet = props => {
       <View style={{ ...DefaultStyles.flexContainer, ...DefaultStyles.ph5 }}>
         {products.map((item, key) => {
           return (
-            <View key={key.toString()} style={[DefaultStyles.w50, styles.productBox]}>
+            <View
+              key={key.toString()}
+              style={[DefaultStyles.w50, styles.productBox]}
+            >
               <ProductDesign
                 style={DefaultStyles.w95}
                 product={item}
@@ -60,12 +65,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 12,
     paddingTop: 15,
-    paddingBottom: 8    
+    paddingBottom: 8
   },
   titleText: {
     fontFamily: "open-sans-bold"
   },
-  moreText: {    
+  moreText: {
     fontFamily: "open-sans",
     fontStyle: "italic",
     fontWeight: "bold",
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
   },
   productBox: {
     paddingTop: 5,
-    paddingLeft: 2    
+    paddingLeft: 2
   }
 });
 

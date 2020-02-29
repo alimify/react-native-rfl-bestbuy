@@ -4,6 +4,7 @@ import { StyleSheet, View, ScrollView, Image } from "react-native";
 import Text from "../components/helpers/Text";
 import Spinner from "../components/helpers/Spinner";
 import DefaultStyles from "../constants/DefaultStyles";
+import Colors from '../constants/Colors';
 
 import SiderBarItem from "../components/category/SideBarItem";
 import Slot from "../components/category/Slot";
@@ -39,7 +40,7 @@ const CategoryScreen = props => {
           ))}
         </ScrollView>
       </View>
-      <View style={DefaultStyles.w70}>
+      <View style={[DefaultStyles.w71, styles.backgroundColor]}>
         <ScrollView>
           {/* Sub Category Slot */}
           {megaMenus.map(item => (
@@ -53,7 +54,10 @@ const CategoryScreen = props => {
 
 const styles = StyleSheet.create({
   customBoxDesign: {
-    paddingTop: 30,
+    paddingTop: 10
+  },
+  backgroundColor: {
+    backgroundColor: Colors.fontColor1
   }
 });
 

@@ -8,19 +8,17 @@ const Recommended = props => {
   const { home } = props.store,
     [getLoading, setLoading] = useState(true);
 
-    useEffect(() => {
-      
+  useEffect(() => {
     const loadData = async () => {
-
       await home.fetchBestBuyChoicesAll({
         limit: 40
       });
-        
+
       setLoading(false);
     };
 
     loadData();
-  },[home,setLoading]);
+  }, [home, setLoading]);
 
   if (getLoading) {
     return <Spinner />;
@@ -42,16 +40,18 @@ const Recommended = props => {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#F1F1F1",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    paddingTop: 8,
+    marginLeft: 0
   },
   productsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     flexWrap: "wrap",
-    marginLeft: 8,
-    marginRight: 8
+    marginLeft: 5,
+    marginRight: 5
   }
 });
 
