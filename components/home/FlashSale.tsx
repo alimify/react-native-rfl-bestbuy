@@ -41,7 +41,7 @@ const HomeFlashSale = props => {
     }}>
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Flash Sale</Text>
+        <Text style={DefaultStyles.sectionTitle}>Flash Sale</Text>
         <View>
           <View style={styles.flashTime}>
             <Text style={styles.title}>Ending In</Text>

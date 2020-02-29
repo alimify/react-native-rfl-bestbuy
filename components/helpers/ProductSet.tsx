@@ -17,7 +17,7 @@ const ProductSet = props => {
     <View style={styles.container}>
       {props.title ? (
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{props.title}</Text>
+          <Text style={styles.titleText}>{props.title}</Text>
           <TouchableOpacity
             onPress={() => {
               if (props.screen) {
@@ -35,7 +35,7 @@ const ProductSet = props => {
       <View style={{ ...DefaultStyles.flexContainer, ...DefaultStyles.ph5 }}>
         {products.map((item, key) => {
           return (
-            <View key={key.toString()} style={DefaultStyles.w50}>
+            <View key={key.toString()} style={[DefaultStyles.w50, styles.productBox]}>
               <ProductDesign
                 style={DefaultStyles.w95}
                 product={item}
@@ -52,22 +52,28 @@ const ProductSet = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 1
+    marginHorizontal: 0
   },
   titleContainer: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 12,
-    paddingVertical: 8
+    paddingTop: 15,
+    paddingBottom: 8    
   },
-  title: {
-    fontWeight: "bold"
+  titleText: {
+    fontFamily: "open-sans-bold"
   },
-  moreText: {
+  moreText: {    
+    fontFamily: "open-sans",
     fontStyle: "italic",
-    fontWeight: "500",
+    fontWeight: "bold",
     color: Colors.baseColor7
+  },
+  productBox: {
+    paddingTop: 5,
+    paddingLeft: 2    
   }
 });
 

@@ -5,54 +5,54 @@ import Spinner from "../../components/helpers/Spinner";
 import ProductSet from "../../components/helpers/ProductSet";
 
 const Recommended = props => {
-    const { shop } = props.store,
-        [getLoading, setLoading] = useState(true);
+  const { shop } = props.store,
+    [getLoading, setLoading] = useState(true);
 
-    useEffect(() => {
+  useEffect(() => {
+    const loadData = async () => {
+      await shop.fetchNewArrivals({
+        page: 1
+      });
 
-        const loadData = async () => {
+      setLoading(false);
+    };
 
-            await shop.fetchNewArrivals({
-                page: 1
-            });
+    loadData();
+  }, [shop, setLoading]);
 
-            setLoading(false);
-        };
+  if (getLoading) {
+    return <Spinner />;
+  }
 
-        loadData();
-    }, [shop, setLoading]);
-
-    if (getLoading) {
-        return <Spinner />;
-    }
-
-    return (
-        <View style={styles.container}>
-            <ScrollView>
-                <ProductSet
-                    title={false}
-                    screen={false}
-                    products={shop.NEW_ARRIVALS ? shop.NEW_ARRIVALS.data : []}
-                />
-            </ScrollView>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <ProductSet
+          title={false}
+          screen={false}
+          products={shop.NEW_ARRIVALS ? shop.NEW_ARRIVALS.data : []}
+        />
+      </ScrollView>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        // flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    productsContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        flexWrap: "wrap",
-        marginLeft: 8,
-        marginRight: 8
-    }
+  container: {
+    // flex: 1,
+    backgroundColor: "#F1F1F1",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 8,
+    marginLeft: 5
+  },
+  productsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    marginLeft: 5,
+    marginRight: 8
+  }
 });
 
 export default inject("store")(observer(Recommended));

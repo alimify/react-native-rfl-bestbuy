@@ -2,6 +2,9 @@ import { StyleSheet} from 'react-native';
 import Colors from './Colors'
 
 const styles = StyleSheet.create({
+    sectionTitle: {
+        fontFamily: 'open-sans-bold'
+    },
     baseColor4: {
         color: Colors.baseColor4
     },

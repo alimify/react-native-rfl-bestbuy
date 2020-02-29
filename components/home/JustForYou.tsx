@@ -11,21 +11,24 @@ import {
 import { FlatList } from "react-native-gesture-handler";
 import Colors from "../../constants/Colors";
 import { withNavigation } from "react-navigation";
+import DefaultStyles from '../../constants/DefaultStyles';
 
 const PriceText = props => {
   return !(
     props.product.actual_discount > 0 && props.product.product_price_now > 0
   ) ? (
     <Text style={styles.itemPrice}>
-      <Text style={styles.text}>{'\u09F3'}</Text>
-      {props.product.product_price_now}</Text>
+      <Text style={styles.text}>{"\u09F3"}</Text>
+      {props.product.product_price_now}
+    </Text>
   ) : (
     <View>
       <Text style={styles.itemPrice}>
-        <Text style={styles.text}>{'\u09F3'}</Text>
-        {props.product.product_price_now}</Text>
+        <Text style={styles.text}>{"\u09F3"}</Text>
+        {props.product.product_price_now}
+      </Text>
       <Text style={styles.itemRegularPrice}>
-        <Text style={styles.text}>{'\u09F3'}</Text>
+        <Text style={styles.text}>{"\u09F3"}</Text>
         {props.product.local_selling_price}
       </Text>
     </View>
@@ -69,7 +72,7 @@ const JustForYou = props => {
   return (
     <View style={styles.itemsContainer}>
       <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>Just For You</Text>
+        <Text style={DefaultStyles.sectionTitle}>Just For You</Text>
         <TouchableOpacity
           onPress={() => {
             props.navigation.navigate("JustForYou");
@@ -82,10 +85,11 @@ const JustForYou = props => {
         data={products}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <JustForYouItem 
+          <JustForYouItem
             style={styles.listBox}
-            navigation={props.navigation} 
-            product={item} />
+            navigation={props.navigation}
+            product={item}
+          />
         )}
         style={{ flexWrap: "wrap", flexDirection: "row" }}
         horizontal={true}
@@ -109,7 +113,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8
   },
   titleText: {
-    fontFamily: "open-sans"
+    fontFamily: "open-sans-bold",
   },
   titleMore: {
     fontFamily: "open-sans",

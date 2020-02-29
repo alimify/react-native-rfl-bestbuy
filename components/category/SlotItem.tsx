@@ -29,8 +29,8 @@ const SlotItem = props => {
           />
         </View>
         <View>
-          <Text style={styles.itemtitle} textBreakStrategy={'simple'}>
-            {props.category.name}            
+          <Text style={styles.itemtitle} textBreakStrategy={"simple"}>
+            {props.category.name}
           </Text>
         </View>
       </View>
@@ -39,23 +39,22 @@ const SlotItem = props => {
 };
 
 const styles = StyleSheet.create({
-
   image: {
     width: 40,
     height: 40
   },
-  container: {    
+  container: {
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
     textAlign: "center",
-    marginHorizontal: 5,    
+    marginHorizontal: 5
   },
   itemtitle: {
     color: "#DDDDDD",
     textAlign: "center",
     marginVertical: 20,
-    fontFamily:"latoregular",
+    fontFamily: "latobold",
     fontSize: 10
   }
 
@@ -63,7 +62,6 @@ const styles = StyleSheet.create({
   //   // justifyContent: "center",
   //   // flex: 1
   // },
-
 
   // titleContainer: {},
 

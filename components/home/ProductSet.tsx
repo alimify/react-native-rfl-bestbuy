@@ -17,7 +17,7 @@ const Recommended = props => {
     return (
       <View style={styles.container}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{props.title}</Text>
+          <Text style={DefaultStyles.sectionTitle}>{props.title}</Text>
           <Text style={styles.moreText}>More > </Text>
         </View>
         <View style={{ ...DefaultStyles.flexContainer,...DefaultStyles.ph5}}>

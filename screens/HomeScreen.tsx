@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
 import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
 import Spinner from "../components/helpers/Spinner";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 import {
   HeaderButtons,
   HeaderButton,
@@ -13,7 +13,6 @@ import FlashSale from "../components/home/FlashSale";
 import NewArrivals from "../components/home/NewArrivals";
 import JustForYou from "../components/home/JustForYou";
 import ProductSet from "../components/helpers/ProductSet";
-
 import NavigationService from "../navigation/NavigationService";
 
 const HomeScreen = props => {
@@ -136,22 +135,14 @@ const HomeScreen = props => {
 const HeaderSearchInput = props => {
   return (
     <TouchableOpacity
-      style={{ borderRadius: 20, marginLeft: -25, backgroundColor: "#f7f6f2" }}
+      style={styles.searchContainer}
       activeOpacity={1}
       onPress={() => {
         NavigationService.navigate("Search", {});
       }}
     >
-      <View
-        pointerEvents="none"
-        style={{
-          flexDirection: "row",
-          width: 300,
-          marginLeft: -5,
-          marginTop: 3
-        }}
-      >
-        <Ionicons style={{ color: "#b4b5b3" }} name="ios-search" size={24} />
+      <View pointerEvents="none" style={styles.searchBox}>
+        <Ionicons style={styles.searchIcon} name="md-search" size={24} />
       </View>
     </TouchableOpacity>
   );
@@ -161,9 +152,10 @@ const HeaderButtonComponent = props => {
   return (
     <HeaderButton
       {...props}
-      IconComponent={Ionicons}
-      iconSize={40}
-      color="gray"
+      IconComponent={AntDesign}
+      iconSize={30}
+      style={styles.menuPositioning}
+      color="red"
     />
   );
 };
@@ -174,8 +166,8 @@ HomeScreen.navigationOptions = navData => {
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButtonComponent}>
         <Item
-          title="Menu"
-          iconName="ios-menu"
+          title="Menu"          
+          iconName="menu-unfold"
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}
@@ -185,6 +177,27 @@ HomeScreen.navigationOptions = navData => {
   };
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  menuPositioning: {
+    marginLeft: 5
+  },
+  searchContainer: {
+    borderRadius: 0,
+    marginLeft: -20,
+    backgroundColor: "#f1f1f1",
+    borderWidth: 2,
+    borderColor: '#DDD'
+  },
+  searchBox: {
+    flexDirection: "row",
+    width: 300,
+    marginLeft: -8,
+    marginTop: 3
+  },
+  searchIcon: {
+    color: "#b4b5b3",
+    marginLeft: 10
+  }
+});
 
 export default inject("store")(observer(HomeScreen));

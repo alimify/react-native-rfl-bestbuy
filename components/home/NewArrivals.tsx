@@ -11,6 +11,7 @@ import {
 import { FlatList } from "react-native-gesture-handler";
 import Colors from "../../constants/Colors";
 import { withNavigation } from "react-navigation";
+import DefaultStyles from '../../constants/DefaultStyles';
 
 const PriceText = props => {
   return !(
@@ -68,7 +69,7 @@ const NewArrivals = props => {
   return (
     <View style={styles.itemsContainer}>
       <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>New Arrivals</Text>
+        <Text style={DefaultStyles.sectionTitle}>New Arrivals</Text>
         <TouchableOpacity
           onPress={() => {
             props.navigation.navigate("NewArrivals");
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8
   },
   titleText: {
-    fontFamily: "open-sans"
+    fontFamily: "open-sans-bold",
   },
   titleMore: {
     fontFamily: "open-sans",
