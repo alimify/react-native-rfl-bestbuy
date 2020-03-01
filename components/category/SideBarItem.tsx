@@ -10,7 +10,7 @@ const CategorySideBarItem = props => {
           // props.navigation.navigate('CategoryProduct')
         }}
       >
-        <View style={styles.sideBarItemContainer}>
+        <View style={{ ...styles.sideBarItemContainer, ...{ borderBottomColor: props.slotActive ? 'red' : '#fff'}}}>
           <View style={styles.sideBarItemImageContainer}>
             <Image
               style={styles.sideBarItemImage}
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 2,
     borderBottomWidth: 1,
-    borderBottomColor: "#FFF",
     paddingBottom: 5,
     paddingTop: 0,
     flexWrap: "wrap"
