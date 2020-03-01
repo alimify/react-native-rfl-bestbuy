@@ -1,7 +1,7 @@
 import React from "react";
 import { SliderBox } from "react-native-image-slider-box";
 import { StyleSheet, View, ScrollView } from "react-native";
-import DefaultStyles from "../../constants/DefaultStyles";
+
 
 const Sliders = props => {
   const Sliders = props.product
