@@ -49,19 +49,21 @@ const Slot = props => {
 const styles = StyleSheet.create({
   boxDesign: {
     paddingBottom: 20,
-    borderBottomColor: '#DDDDDD',
-    borderBottomWidth: 1
+    borderColor: "#DDDDDD",
+    borderWidth: 1,
+    borderBottomWidth: 0
   },
   titleBoxDesign: {
-    paddingVertical: 5,
-    //backgroundColor: '#FFE3E3',    
+    paddingVertical: 5
+    //backgroundColor: '#FFE3E3',
   },
-  title: {    
+  title: {
     fontFamily: "open-sans",
     fontWeight: "400",
-    fontSize: 16,
-    paddingHorizontal: 5,
-    paddingVertical: 5
+    fontSize: 18,
+    paddingHorizontal: 10,
+    paddingVertical: 0,
+    paddingBottom: 10
   }
 });
 

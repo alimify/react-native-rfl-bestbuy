@@ -44,14 +44,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 8,
-    marginLeft: 5
+    marginLeft: 0
   },
   productsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     flexWrap: "wrap",
     marginLeft: 5,
-    marginRight: 8
+    marginRight: 5
   }
 });
 

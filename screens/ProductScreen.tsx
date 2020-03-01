@@ -4,6 +4,7 @@ import { withNavigation } from "react-navigation";
 import { inject, observer } from "mobx-react";
 import Text from "../components/helpers/Text";
 import Spinner from "../components/helpers/Spinner";
+import DefaultStyles from "../constants/DefaultStyles";
 
 import ImageSlider from "../components/product/ImageSlider";
 import SelectVariation from "../components/product/SelectVariation";
@@ -37,23 +38,25 @@ const ProductScreen = props => {
     <ScrollView>
       <View>
         <ImageSlider product={shop.PRODUCT_DETAILS} />
-        <View>
-          <Text style={styles.title}> {product.title} </Text>
-        </View>
-        <View style={styles.slotContainer}>
-          <SelectVariation product={shop.PRODUCT_DETAILS} />
-        </View>
-        <View style={styles.slotContainer}>
-          <DeliveryInformation product={product} />
-        </View>
-        <View style={styles.slotContainer}>
-          <PaymentMethod product={product} />
-        </View>
-        <View style={styles.slotContainer}>
-          <Reviews product={shop.PRODUCT_DETAILS} />
-        </View>
-        <View style={styles.slotContainer}>
-          <SimilarProduct product={shop.PRODUCT_DETAILS} />
+        <View style={DefaultStyles.paddingHorizontal}>
+          <View>
+            <Text style={styles.title}> {product.title} </Text>
+          </View>
+          {/* <View style={styles.slotContainer}>
+            <SelectVariation product={shop.PRODUCT_DETAILS} />
+          </View> */}
+          {/* <View style={styles.slotContainer}>
+            <DeliveryInformation product={product} />
+          </View> */}
+          {/* <View style={styles.slotContainer}>
+            <PaymentMethod product={product} />
+          </View> */}
+          {/* <View style={styles.slotContainer}>
+            <Reviews product={shop.PRODUCT_DETAILS} />
+          </View> */}
+          {/* <View style={styles.slotContainer}>
+            <SimilarProduct product={shop.PRODUCT_DETAILS} />
+          </View> */}
         </View>
       </View>
     </ScrollView>

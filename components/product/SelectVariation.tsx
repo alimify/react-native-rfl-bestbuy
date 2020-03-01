@@ -1,7 +1,14 @@
-import React, { useState,useEffect } from "react";
-import { StyleSheet, View, ScrollView, Image, TouchableOpacity, Button } from "react-native";
-import { AntDesign } from '@expo/vector-icons'
-import Modal from 'react-native-modal'
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  Button
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+import Modal from "react-native-modal";
 import { set } from "mobx";
 import { withNavigation } from "react-navigation";
 import { inject, observer } from "mobx-react";
@@ -11,38 +18,33 @@ const PriceText = props => {
   return !(
     props.product.actual_discount > 0 && props.product.product_price_now > 0
   ) ? (
-      <View style={{}}>
-        <Text style={styles.priceNow}>$ {props.product.product_price_now}</Text>
-      </View>
-    ) : (
-      <View style={{}}>
-        <Text style={styles.priceNow}>$ {props.product.product_price_now}</Text>
-        <Text style={styles.regularPrice}>
-          $ {props.product.local_selling_price}
-        </Text>
-      </View>
-    );
+    <View style={{}}>
+      <Text style={styles.priceNow}>$ {props.product.product_price_now}</Text>
+    </View>
+  ) : (
+    <View style={{}}>
+      <Text style={styles.priceNow}>$ {props.product.product_price_now}</Text>
+      <Text style={styles.regularPrice}>
+        $ {props.product.local_selling_price}
+      </Text>
+    </View>
+  );
 };
 
-
-const VariationModal = (props) => {
-
+const VariationModal = props => {
   const colors = props.product.colors,
-    sizeExist = (colors.length-1) >= props.getColorKey,
-    sizes = sizeExist ? props.product.colors[props.getColorKey].sizes : []
-  
-  
+    sizeExist = colors.length - 1 >= props.getColorKey,
+    sizes = sizeExist ? props.product.colors[props.getColorKey].sizes : [];
+
   useEffect(() => {
-    if ((colors.length-1) >= props.getColorKey) {
-      props.setColorId(colors[props.getColorKey].id)
+    if (colors.length - 1 >= props.getColorKey) {
+      props.setColorId(colors[props.getColorKey].id);
     }
 
-    if ((sizes.length-1) >= props.getSizeKey) {
-      props.setSizeId(sizes[props.getSizeKey].id)
+    if (sizes.length - 1 >= props.getSizeKey) {
+      props.setSizeId(sizes[props.getSizeKey].id);
     }
-
-  },[props,sizes,colors,sizeExist])
-
+  }, [props, sizes, colors, sizeExist]);
 
   return (
     <Modal
@@ -78,49 +80,68 @@ const VariationModal = (props) => {
           </View>
         </View>
         <View>
-          <Text>{colors.length > 0 ? 'Colors' : ''}</Text>
-            <View style={styles.variationItemsContainer}>
-              {colors.map((item, key) => {
-                return (
-                  <TouchableOpacity key={item.id.toString()} onPress={() => {
-                    props.setColorId(item.id)
-                    props.setColorKey(key)
-                  }}>
-                    <View style={{padding: 5}}>
+          <Text>{colors.length > 0 ? "Colors" : ""}</Text>
+          <View style={styles.variationItemsContainer}>
+            {colors.map((item, key) => {
+              return (
+                <TouchableOpacity
+                  key={item.id.toString()}
+                  onPress={() => {
+                    props.setColorId(item.id);
+                    props.setColorKey(key);
+                  }}
+                >
+                  <View style={{ padding: 5 }}>
                     <Image
-                      source={{ uri: "https://rflbestbuy.com/secure/public/pmp_img/" + item.color_codes }}
-                      style={{ height: 50, width: 50, borderWidth: 2,borderColor: key === props.getColorKey ? 'green' : '#ddd' }}
-                      />
-                    </View>
-                  </TouchableOpacity>
+                      source={{
+                        uri:
+                          "https://rflbestbuy.com/secure/public/pmp_img/" +
+                          item.color_codes
+                      }}
+                      style={{
+                        height: 50,
+                        width: 50,
+                        borderWidth: 2,
+                        borderColor:
+                          key === props.getColorKey ? "green" : "#ddd"
+                      }}
+                    />
+                  </View>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
 
-                )
-              })}
-              </View>
-
-          <Text>{sizes.length > 0 ? 'Sizes' : ''}</Text>
-
+          <Text>{sizes.length > 0 ? "Sizes" : ""}</Text>
 
           <View style={styles.variationItemsContainer}>
             {sizes.map((item, key) => {
               return (
-                <TouchableOpacity key={key.toString()} onPress={() => {
-                  props.setSizeId(item.id)
-                  props.setSizeKey(key)
-                }}>
-
+                <TouchableOpacity
+                  key={key.toString()}
+                  onPress={() => {
+                    props.setSizeId(item.id);
+                    props.setSizeKey(key);
+                  }}
+                >
                   <Image
-                    source={{ uri: "https://rflbestbuy.com/secure/public/pmp_img/" + item.color_codes }}
-                    style={{ height: 50, width: 50, borderWidth: 1,paddingHorizontal: 5, borderColor: key === props.getSizeKey ? 'green' : '#ddd' }}
+                    source={{
+                      uri:
+                        "https://rflbestbuy.com/secure/public/pmp_img/" +
+                        item.color_codes
+                    }}
+                    style={{
+                      height: 50,
+                      width: 50,
+                      borderWidth: 1,
+                      paddingHorizontal: 5,
+                      borderColor: key === props.getSizeKey ? "green" : "#ddd"
+                    }}
                   />
                 </TouchableOpacity>
-
-              )
+              );
             })}
-
           </View>
-
-
         </View>
         <View>
           <View>
@@ -148,19 +169,23 @@ const VariationModal = (props) => {
           </View>
         </View>
         <View>
-          <Button title="ADD TO CART" onPress={() => { props.addToCart(props.product.id) }} />
-          <Button title="Buy" onPress={() => { }} />
+          <Button
+            title="ADD TO CART"
+            onPress={() => {
+              props.addToCart(props.product.id);
+            }}
+          />
+          <Button title="Buy" onPress={() => {}} />
         </View>
       </View>
     </Modal>
   );
-}
+};
 
 const SelectVariation = props => {
-
   const [getModalShow, setModalShow] = useState(false),
     [getLoading, setLoading] = useState(false),
-    { shop } = props.store
+    { shop } = props.store;
 
   const [getQuantity, setQuantity] = useState(1),
     [getColorKey, setColorKey] = useState(0),
@@ -169,9 +194,8 @@ const SelectVariation = props => {
     [getSizeKey, setSizeKey] = useState(0),
     [getTypeId, setTypeId] = useState();
 
-  const addToCart = async (id) => {
-
-    setLoading(true)
+  const addToCart = async id => {
+    setLoading(true);
     await shop.fetchAddToCart({
       // self_token: this.$store.state.user.SELF_TOKEN,
       main_pid: id,
@@ -179,21 +203,16 @@ const SelectVariation = props => {
       color: getColorId,
       size: getSizeId,
       type: getTypeId
-    })
-    setLoading(false)
+    });
+    setLoading(false);
 
     // console.log(shop.ADD_TO_CART)
 
-    await shop.fetchCart({})
-
-
+    await shop.fetchCart({});
   };
 
-
-
-
   if (!props.product) {
-    return <View></View>
+    return <View></View>;
   }
 
   return (
@@ -204,7 +223,10 @@ const SelectVariation = props => {
             <Text style={styles.variationText}>Select Variation & Qty</Text>
             <View style={styles.priceContainer}>
               <Text>Price: </Text>
-              <Text style={styles.priceAmount}> $ {props.product.product.local_selling_price}</Text>
+              <Text style={styles.priceAmount}>
+                {" "}
+                $ {props.product.product.local_selling_price}
+              </Text>
             </View>
           </View>
           <View>
@@ -286,10 +308,9 @@ const styles = StyleSheet.create({
   },
 
   variationItemsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexDirection: "row",
+    flexWrap: "wrap"
   }
-
 });
 
 export default inject("store")(observer(withNavigation(SelectVariation)));

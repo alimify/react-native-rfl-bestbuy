@@ -35,38 +35,40 @@ const CategoryProductScreen = props => {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <View style={DefaultStyles.flexContainer}>
-          {products.map((item, key) => {
-            return (
-              <View key={key.toString()} style={DefaultStyles.w50}>
-                <ProductDesign
-                  style={DefaultStyles.w95}
-                  product={item}
-                  key={key.toString()}
-                />
-              </View>
-            );
-          })}
-        </View>
-      </ScrollView>
+      <View style={DefaultStyles.paddingHorizontal}>
+        <ScrollView>
+          <View style={DefaultStyles.flexContainer}>
+            {products.map((item, key) => {
+              return (
+                <View key={key.toString()} style={DefaultStyles.w50}>
+                  <ProductDesign
+                    style={DefaultStyles.w95}
+                    product={item}
+                    key={key.toString()}
+                  />
+                </View>
+              );
+            })}
+          </View>
+        </ScrollView>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    backgroundColor: "#fff",
+    //flex: 1,
+    backgroundColor: "#F1F1F1",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    paddingTop: 10,
+    marginLeft: 5
   },
   productsContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    marginLeft: 8,
-    marginRight: 8
+    justifyContent: "space-between"
+    // flexWrap: "wrap"
   }
 });
 

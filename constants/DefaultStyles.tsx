@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
     w70: {
         width: '70%'
     },
+    w71: {
+        width: '71%'
+    },
     w80: {
         width: '80%'
     },
@@ -175,6 +178,9 @@ const styles = StyleSheet.create({
     m5: {
         margin: 5
     },
+    paddingHorizontal: {
+        paddingHorizontal: 5
+    }
 });
 
 

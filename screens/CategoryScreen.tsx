@@ -4,6 +4,7 @@ import { StyleSheet, View, ScrollView, Image } from "react-native";
 import Text from "../components/helpers/Text";
 import Spinner from "../components/helpers/Spinner";
 import DefaultStyles from "../constants/DefaultStyles";
+import Colors from '../constants/Colors';
 
 import SiderBarItem from "../components/category/SideBarItem";
 import Slot from "../components/category/Slot";
@@ -43,16 +44,13 @@ const CategoryScreen = props => {
           ))}
         </ScrollView>
       </View>
+
       <View style={DefaultStyles.w70}>
 
         <ScrollView onScroll={(e) => {
-          // console.log(e.nativeEvent.contentOffset)
-          //19.272727966308594
-
-
 
           const positionKeys = Object.keys(getSlotPosition),
-            curPos = parseInt(e.nativeEvent.contentOffset.y.toString())+200;
+            curPos = parseInt(e.nativeEvent.contentOffset.y.toString()) + 200;
 
 
           var closest = positionKeys.reduce(function (prev, curr) {
@@ -74,13 +72,17 @@ const CategoryScreen = props => {
           ))}
         </ScrollView>
       </View>
-    </View>
-  );
-};
-
+      
+      </View>
+      );
+    };
+    
 const styles = StyleSheet.create({
   customBoxDesign: {
-    // paddingTop: 30,
+    paddingTop: 10
+  },
+  backgroundColor: {
+    backgroundColor: Colors.fontColor1
   }
 });
 

@@ -1,10 +1,16 @@
 import React, { useEffect, useCallback } from "react";
-import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  Text,
+  Dimensions
+} from "react-native";
 import { withNavigation } from "react-navigation";
 import { inject, observer } from "mobx-react";
 
-
-const deviceWidth = Dimensions.get('window').width;
+const deviceWidth = Dimensions.get("window").width;
 
 const PriceText = props => {
   return !(
@@ -43,7 +49,8 @@ const ProductDesign = props => {
               style={styles.image}
               source={{
                 uri:
-                  "https://rflbestbuy.com/secure/" + props.product.image.full_size_directory
+                  "https://rflbestbuy.com/secure/" +
+                  props.product.image.full_size_directory
               }}
             />
           ) : (
@@ -53,11 +60,9 @@ const ProductDesign = props => {
         <View style={styles.textContainer}>
           <View style={styles.titleContainer}>
             <Text numberOfLines={1} style={styles.itemTitle}>
-              {props.product.title} {" "}
-              {/* {props.product.title.substring(0, 15)}{" "} */}
+              {props.product.title}{" "}
             </Text>
           </View>
-
           <PriceText product={props.product} />
         </View>
       </View>
@@ -67,12 +72,12 @@ const ProductDesign = props => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,    
     borderColor: "#ddd",
+    marginHorizontal: 2,
     borderWidth: 1,
-    marginLeft: 4,
-    // flexBasis: '48.5%',
     backgroundColor: "#fff",
-    marginBottom: 5
+    marginBottom: 10
   },
   imageContainer: {},
   textContainer: {
@@ -80,9 +85,9 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: '100%',
+    width: "100%",
     height: undefined,
-    aspectRatio: 1    
+    aspectRatio: 1
   },
 
   itemTitle: {

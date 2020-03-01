@@ -59,33 +59,31 @@ const navigationOptions = {
 };
 
 const MainNavigator = createStackNavigator({
-  Home: HomeScreen,
-  Category: CategoryScreen,
-  CategoryProduct: CategoryProductScreen,
-  Product: ProductScreen,
-  Search: SearchScreen,
-  Reviews: ReviewScreen,
-  Login: LoginScreen,
-  Register: RegisterScreen,
-
-  Cart: CartScreen,
-  CartCheckout: CartCheckoutScreen,
-  CartPayment: CartPaymentScreen,
-  CartReview: CartReviewScreen,
-  CartSummary: CartSummeryScreen,
-
-  Recommended: RecommendedScreen,
-  JustForYou: JustForYouScreen,
-  FlashSales: FlashSaleScreen,
-  NewArrivals: NewArrivalScreen,
+  'Home': HomeScreen,
+  'Category': CategoryScreen,
+  "CategoryProduct": CategoryProductScreen,
+  'Product': ProductScreen,
+  'Search': SearchScreen,
+  'Reviews': ReviewScreen,
+  'Login': LoginScreen,
+  'Register': RegisterScreen,
+  'Cart': CartScreen,
+  "CartCheckout": CartCheckoutScreen,
+  "CartPayment": CartPaymentScreen,
+  'CartReview': CartReviewScreen,
+  "CartSummary": CartSummeryScreen,
+  'Recommended': RecommendedScreen,
+  "JustForYou": JustForYouScreen,
+  "FlashSales": FlashSaleScreen,
+  "New Arrivals": NewArrivalScreen,
 
   ///UserAccount
-  UserAccount: UserAccount,
-  UserAccountUpdate: UserAccountUpdate,
-  UserAccountOrderHistory: UserAccountOrderHistory,
-  UserRewardPoint: UserRewardPointScreen,
-  UserReview: UserReview,
-  UserCancellation: UserCancellation
+  "UserAccount": UserAccount,
+  "UserAccountUpdate": UserAccountUpdate,
+  "UserAccountOrderHistory": UserAccountOrderHistory,
+  "UserRewardPoint": UserRewardPointScreen,
+  "UserReview": UserReview,
+  "UserCancellation": UserCancellation
 });
 
 MainNavigator.navigationOptions = ({ navigation }) => {

@@ -16,7 +16,7 @@ const SlotItem = props => {
         //   shop.fetchSearchProducts({
         //    slug: props.category.seo_url
         //  })
-        navigate("CategoryProduct", { category: props.category });
+        navigate("Category Product", { category: props.category });
       }}
     >
       <View style={styles.container}>

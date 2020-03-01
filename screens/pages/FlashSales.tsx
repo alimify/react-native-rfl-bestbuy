@@ -5,54 +5,54 @@ import Spinner from "../../components/helpers/Spinner";
 import ProductSet from "../../components/helpers/ProductSet";
 
 const Recommended = props => {
-    const { home } = props.store,
-        [getLoading, setLoading] = useState(true);
+  const { home } = props.store,
+    [getLoading, setLoading] = useState(true);
 
-    useEffect(() => {
+  useEffect(() => {
+    const loadData = async () => {
+      await home.fetchBestBuyChoicesAll({
+        limit: 40
+      });
 
-        const loadData = async () => {
+      setLoading(false);
+    };
 
-            await home.fetchBestBuyChoicesAll({
-                limit: 40
-            });
+    loadData();
+  }, [home, setLoading]);
 
-            setLoading(false);
-        };
+  if (getLoading) {
+    return <Spinner />;
+  }
 
-        loadData();
-    }, [home, setLoading]);
-
-    if (getLoading) {
-        return <Spinner />;
-    }
-
-    return (
-        <View style={styles.container}>
-            <ScrollView>
-                <ProductSet
-                    title={false}
-                    screen={false}
-                    products={home.BESTBUY_CHOICES_ALL}
-                />
-            </ScrollView>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <ProductSet
+          title={false}
+          screen={false}
+          products={home.BESTBUY_CHOICES_ALL}
+        />
+      </ScrollView>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        // flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    productsContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        flexWrap: "wrap",
-        marginLeft: 8,
-        marginRight: 8
-    }
+  container: {
+    // flex: 1,
+    backgroundColor: "#F1F1F1",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 8,
+    marginLeft: 0
+  },
+  productsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    marginLeft: 5,
+    marginRight: 5
+  }
 });
 
 export default inject("store")(observer(Recommended));
