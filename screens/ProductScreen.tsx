@@ -63,6 +63,17 @@ const ProductScreen = props => {
   );
 };
 
+
+ProductScreen.navigationOptions = navData => {
+
+  const product = navData.navigation.getParam("product")
+
+  return {
+    headerTitle: () => <Text>{product.title || 'Product'}</Text>,
+    tabBarVisible: false
+  };
+};
+
 const styles = StyleSheet.create({
   container: {},
   title: {
@@ -85,10 +96,6 @@ const styles = StyleSheet.create({
   }
 });
 
-ProductScreen.navigationOptions = navData => {
-  return {
-    tabBarVisible: false
-  };
-};
+
 
 export default inject("store")(observer(withNavigation(ProductScreen)));

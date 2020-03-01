@@ -11,7 +11,9 @@ import Slot from "../components/category/Slot";
 
 const CategoryScreen = props => {
   const { common } = props.store,
-    [getLoading, setLoading] = useState(true);
+    [getLoading, setLoading] = useState(true),
+    [getSlotPosition, setSlotPosition] = useState({}),
+    [getCurrentSlotPos, setCurrentSlotPos] = useState('')
 
   useEffect(() => {
     const loadData = async () => {
@@ -31,26 +33,49 @@ const CategoryScreen = props => {
 
   const megaMenus = common.GLOBALS ? common.GLOBALS.megamenus : [];
 
+
   return (
     <View style={[DefaultStyles.flexContainer, styles.customBoxDesign]}>
       <View style={DefaultStyles.w25}>
         <ScrollView>
-          {megaMenus.map(item => (
-            <SiderBarItem key={item.id.toString()} category={item} />
+          {megaMenus.map((item, key) => (
+            <SiderBarItem key={item.id.toString()} category={item} slotActive={getCurrentSlotPos.length ? getSlotPosition[getCurrentSlotPos] && getSlotPosition[getCurrentSlotPos].id == item.id : key == 0} />
+
           ))}
         </ScrollView>
       </View>
-      <View style={[DefaultStyles.w71, styles.backgroundColor]}>
-        <ScrollView>
+
+      <View style={DefaultStyles.w70}>
+
+        <ScrollView onScroll={(e) => {
+          const positionKeys = Object.keys(getSlotPosition),
+            curPos = parseInt(e.nativeEvent.contentOffset.y.toString()) + 200;
+          var closest = positionKeys.reduce(function (prev, curr) {
+            return (Math.abs(parseInt(curr) - curPos) < Math.abs(parseInt(prev) - curPos) ? curr : prev);
+          });
+          setCurrentSlotPos(closest)
+        }}>
           {/* Sub Category Slot */}
           {megaMenus.map(item => (
-            <Slot key={item.id.toString()} category={item} />
+            <Slot key={item.id.toString()} category={item}
+              getSlotPosition={getSlotPosition}
+              setSlotPosition={setSlotPosition}
+            />
           ))}
         </ScrollView>
       </View>
-    </View>
-  );
+
+      </View>
+      );
+    };
+    
+
+CategoryScreen.navigationOptions = navData => {
+  return {
+    headerTitle: () => <Text>All Categories</Text>
+  };
 };
+
 
 const styles = StyleSheet.create({
   customBoxDesign: {
@@ -60,5 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.fontColor1
   }
 });
+
+
 
 export default inject("store")(observer(CategoryScreen));

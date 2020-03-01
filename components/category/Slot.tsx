@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { StyleSheet, View, ScrollView, Image } from "react-native";
 import Text from "../helpers/Text";
 import DefaultStyles from "../../constants/DefaultStyles";
@@ -6,8 +6,30 @@ import DefaultStyles from "../../constants/DefaultStyles";
 import SlotItem from "./SlotItem";
 
 const Slot = props => {
+
+  const [getRender,setRender] = useState(false)
+  
   return (
-    <View style={styles.boxDesign}>
+    <View style={styles.boxDesign} onLayout={async (e) => {
+
+      if (!getRender) {
+        let getSlot = props.getSlotPosition
+
+        getSlot[parseInt(e.nativeEvent.layout.y.toString())] = {
+          id: props.category.id,
+          position: e.nativeEvent.layout.y
+        }
+
+        await props.setSlotPosition({
+          ...props.getSlotPosition,
+          ...getSlot
+        })
+        await setRender(true)
+      }
+
+
+
+    }}>
       <View style={styles.titleBoxDesign}>
         <Text style={styles.title}>{props.category.name}</Text>
       </View>
@@ -19,7 +41,9 @@ const Slot = props => {
         ))}
       </View>
     </View>
-  );
+  )
+
+
 };
 
 const styles = StyleSheet.create({
