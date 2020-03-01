@@ -75,7 +75,7 @@ const MainNavigator = createStackNavigator({
   'Recommended': RecommendedScreen,
   "JustForYou": JustForYouScreen,
   "FlashSales": FlashSaleScreen,
-  "New Arrivals": NewArrivalScreen,
+  "NewArrivals": NewArrivalScreen,
 
   ///UserAccount
   "UserAccount": UserAccount,

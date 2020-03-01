@@ -48,21 +48,13 @@ const CategoryScreen = props => {
       <View style={DefaultStyles.w70}>
 
         <ScrollView onScroll={(e) => {
-
           const positionKeys = Object.keys(getSlotPosition),
             curPos = parseInt(e.nativeEvent.contentOffset.y.toString()) + 200;
-
-
           var closest = positionKeys.reduce(function (prev, curr) {
             return (Math.abs(parseInt(curr) - curPos) < Math.abs(parseInt(prev) - curPos) ? curr : prev);
           });
-
-
           setCurrentSlotPos(closest)
-
-
         }}>
-
           {/* Sub Category Slot */}
           {megaMenus.map(item => (
             <Slot key={item.id.toString()} category={item}
@@ -72,11 +64,19 @@ const CategoryScreen = props => {
           ))}
         </ScrollView>
       </View>
-      
+
       </View>
       );
     };
     
+
+CategoryScreen.navigationOptions = navData => {
+  return {
+    headerTitle: () => <Text>All Categories</Text>
+  };
+};
+
+
 const styles = StyleSheet.create({
   customBoxDesign: {
     paddingTop: 10

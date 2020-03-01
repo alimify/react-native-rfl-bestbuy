@@ -95,6 +95,17 @@ const NewArrivals = props => {
   );
 };
 
+
+NewArrivals.navigationOptions = navData => {
+
+  return {
+    headerTitle: () => <Text>New Arrivals</Text>
+  };
+  
+};
+
+
+
 const styles = StyleSheet.create({
   itemsContainer: {
     paddingVertical: 10

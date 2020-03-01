@@ -56,6 +56,17 @@ const CategoryProductScreen = props => {
   );
 };
 
+
+
+CategoryProductScreen.navigationOptions = navData => {
+
+  const category = navData.navigation.getParam("category")
+
+  return {
+    headerTitle: () => <Text>{category.name || 'Products'}</Text>
+  };
+};
+
 const styles = StyleSheet.create({
   container: {
     //flex: 1,

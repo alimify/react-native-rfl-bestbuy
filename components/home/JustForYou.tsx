@@ -98,6 +98,18 @@ const JustForYou = props => {
   );
 };
 
+
+
+JustForYou.navigationOptions = navData => {
+
+  return {
+    headerTitle: () => <Text>Just For You</Text>
+  };
+};
+
+
+
+
 const styles = StyleSheet.create({
   itemsContainer: {
     paddingVertical: 10
