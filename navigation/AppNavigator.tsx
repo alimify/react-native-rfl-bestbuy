@@ -59,25 +59,6 @@ const navigationOptions = {
 };
 
 const MainNavigator = createStackNavigator({
-<<<<<<< HEAD
-  Home: HomeScreen,
-  Category: CategoryScreen,
-  CategoryProduct: CategoryProductScreen,
-  Product: ProductScreen,
-  Search: SearchScreen,
-  Reviews: ReviewScreen,
-  Login: LoginScreen,
-  Register: RegisterScreen,
-  Cart: CartScreen,
-  CartCheckout: CartCheckoutScreen,
-  CartPayment: CartPaymentScreen,
-  CartReview: CartReviewScreen,
-  CartSummary: CartSummeryScreen,
-  Recommended: RecommendedScreen,
-  JustForYou: JustForYouScreen,
-  FlashSales: FlashSaleScreen,
-  NewArrivals: NewArrivalScreen,
-=======
   'Home': HomeScreen,
   'Category': CategoryScreen,
   "CategoryProduct": CategoryProductScreen,
@@ -95,7 +76,6 @@ const MainNavigator = createStackNavigator({
   "JustForYou": JustForYouScreen,
   "FlashSales": FlashSaleScreen,
   "NewArrivals": NewArrivalScreen,
->>>>>>> 8d238132bb3d14fb08f4f05234e667323681aad6
 
   ///UserAccount
   UserAccount: UserAccount,
