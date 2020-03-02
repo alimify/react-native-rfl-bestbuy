@@ -37,6 +37,15 @@ const Recommended = props => {
   );
 };
 
+Recommended.navigationOptions = navData => {
+
+  return {
+    headerTitle: () => <Text>New Arrivals</Text>,
+    tabBarVisible: false
+  };
+};
+
+
 const styles = StyleSheet.create({
   container: {
     // flex: 1,

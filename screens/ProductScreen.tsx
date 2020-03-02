@@ -42,21 +42,21 @@ const ProductScreen = props => {
           <View>
             <Text style={styles.title}> {product.title} </Text>
           </View>
-          {/* <View style={styles.slotContainer}>
+          <View style={styles.slotContainer}>
             <SelectVariation product={shop.PRODUCT_DETAILS} />
-          </View> */}
-          {/* <View style={styles.slotContainer}>
+          </View>
+          <View style={styles.slotContainer}>
             <DeliveryInformation product={product} />
-          </View> */}
-          {/* <View style={styles.slotContainer}>
+          </View>
+          <View style={styles.slotContainer}>
             <PaymentMethod product={product} />
-          </View> */}
-          {/* <View style={styles.slotContainer}>
+          </View>
+          <View style={styles.slotContainer}>
             <Reviews product={shop.PRODUCT_DETAILS} />
-          </View> */}
-          {/* <View style={styles.slotContainer}>
+          </View>
+          <View style={styles.slotContainer}>
             <SimilarProduct product={shop.PRODUCT_DETAILS} />
-          </View> */}
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
   slotContainer: {
     backgroundColor: "white",
     padding: 10,
+    marginVertical: 15,
     borderBottomColor: "#ddd",
     borderBottomWidth: 1
   },
