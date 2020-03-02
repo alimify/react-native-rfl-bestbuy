@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useCallback } from "react";
 import { inject, observer } from 'mobx-react'
 
 import {
   StyleSheet,
   View,
   ScrollView,
+  RefreshControl,
   Image,
   Button,
   Text,
@@ -97,10 +98,28 @@ const CartScreen = props => {
 
   const { shop } = props.store,
     [getLoading, setLoading] = useState(false),
+    [getRefreshing, setRefreshing] = useState(false),
     [getCartUpdated, setCartUpdated] = useState(JSON.stringify({})),
     [getDisableCheckout, setDisableCheckout] = useState(false),
     [getCoupon, setCoupon] = useState(''),
-    [getCouponSubmit,setCouponSubmit] = useState(false)
+    [getCouponSubmit, setCouponSubmit] = useState(false)
+  
+  
+  
+
+
+  const onRefresh = useCallback(async () => {
+
+    const loadData = async (shop) => {
+      setRefreshing(true)
+      await shop.fetchCart();
+      setRefreshing(false)
+    }
+
+    loadData(shop)
+
+  }, [shop, setRefreshing]);
+
 
   useEffect(() => {
 
@@ -142,7 +161,7 @@ const CartScreen = props => {
 
   return (
     <View style={DefaultStyles.flex}>
-      <ScrollView style={DefaultStyles.p5}>
+      <ScrollView refreshControl={<RefreshControl refreshing={getRefreshing} onRefresh={onRefresh} />} style={DefaultStyles.p5}>
         {Object.values(shipments).map((shipment, key) => {
           return (
             <View key={key}>
