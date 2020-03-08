@@ -8,6 +8,7 @@ import {
   HeaderButton,
   Item
 } from "react-navigation-header-buttons";
+
 import Sliders from "../components/home/SliderBox";
 import FlashSale from "../components/home/FlashSale";
 import NewArrivals from "../components/home/NewArrivals";
@@ -132,7 +133,7 @@ const HomeScreen = props => {
             limit={8}
           />
         </View>
-        <View>
+         <View>
           <ProductSet
             title={home.INDEX ? home.INDEX.category_one.name : ""}
             products={CategoryOneProducts}
@@ -164,7 +165,7 @@ const HomeScreen = props => {
             products={CategoryThreeProducts}
             limit={8}
           />
-        </View>
+        </View> 
       </View>
     </ScrollView>
   );

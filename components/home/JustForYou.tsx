@@ -84,13 +84,13 @@ const JustForYou = props => {
       <FlatList
         data={products}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <JustForYouItem
+        renderItem={({ item }) => {
+          return (<JustForYouItem
             style={styles.listBox}
             navigation={props.navigation}
             product={item}
-          />
-        )}
+          />)
+        }}
         style={{ flexWrap: "wrap", flexDirection: "row" }}
         horizontal={true}
       />
