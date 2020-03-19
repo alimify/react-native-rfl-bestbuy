@@ -3,6 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { withNavigation } from "react-navigation";
 import { inject, observer } from "mobx-react";
 import Text from "./Text";
+import DefaultStyles from '../../constants/DefaultStyles'
 
 const PriceText = props => {
   return !(
@@ -27,8 +28,9 @@ const Product = props => {
       onPress={() => {
         props.navigation.navigate("Product", { product: props.product });
       }}
+      style={DefaultStyles.w33}
     >
-      <View style={styles.productContainer}>
+      <View style={{ ...DefaultStyles.p3,...{justifyContent:'center'}}}>
         {props.product.image ? (
           <Image
             source={{
@@ -36,10 +38,10 @@ const Product = props => {
                 "https://rflbestbuy.com/secure/" +
                 props.product.image.full_size_directory
             }}
-            style={{ width: 100, height: 100 }}
+            style={{ width: 115, height: 100 }}
           />
         ) : (
-          <Image source={{ uri: "" }} style={{ width: 100, height: 100 }} />
+          <Image source={{ uri: "" }} style={{ width: 115, height: 100 }} />
         )}
 
         <PriceText product={props.product} />
@@ -65,7 +67,8 @@ const styles = StyleSheet.create({
   },
   priceContainer: {
     flexDirection: "row",
-    marginBottom: 12
+    marginBottom: 10,
+    justifyContent:'center'
   },
 
   priceNow: {

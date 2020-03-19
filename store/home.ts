@@ -8,6 +8,7 @@ class Home {
   JUST_FOR_YOU_ALL = false;
   BESTBUY_CHOICES = false;
   BESTBUY_CHOICES_ALL = false;
+  CATEGORY_SET = false;
 
   ///SETTERS
   setIndex(data) {
@@ -28,6 +29,11 @@ class Home {
 
   setBestbuyChoicesAll(data) {
     this.BESTBUY_CHOICES_ALL = data;
+  }
+
+
+  setCategorySet(data) {
+    this.CATEGORY_SET = data
   }
 
   ///GETTERS
@@ -73,6 +79,15 @@ class Home {
 
     return this.setBestbuyChoicesAll(response.data);
   }
+
+
+  async fetchCategorySet(info) {
+    const response = await axios.get('api/home/categorySet', {
+      params: info
+    })
+
+    return this.setCategorySet(response.data)
+  }
 }
 
 decorate(Home, {
@@ -82,6 +97,7 @@ decorate(Home, {
   JUST_FOR_YOU_ALL: observable,
   BESTBUY_CHOICES: observable,
   BESTBUY_CHOICES_ALL: observable,
+  CATEGORY_SET: observable,
 
   //SETTERS
   setIndex: action,
@@ -89,6 +105,7 @@ decorate(Home, {
   setJustForYouAll: action,
   setBestbuyChoices: action,
   setBestbuyChoicesAll: action,
+  setCategorySet: action,
 
   //GETTERS
   fetchIndex: action,
@@ -96,7 +113,7 @@ decorate(Home, {
   fetchJustForYouAll: action,
   fetchBestBuyChoices: action,
   fetchBestBuyChoicesAll: action,
-
+  fetchCategorySet: action
 });
 
 export default new Home();

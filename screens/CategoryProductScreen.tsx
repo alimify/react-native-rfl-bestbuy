@@ -8,12 +8,13 @@ import Spinner from "../components/helpers/Spinner";
 
 const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
   const paddingToBottom = 20;
-  return layoutMeasurement.height + contentOffset.y >=
-    contentSize.height - paddingToBottom;
+  return (
+    layoutMeasurement.height + contentOffset.y >=
+    contentSize.height - paddingToBottom
+  );
 };
 
 const CategoryProductScreen = props => {
-
   const { shop } = props.store,
     category = props.navigation.getParam("category"),
     [getLoading, setLoading] = useState(false),
@@ -32,7 +33,7 @@ const CategoryProductScreen = props => {
         ? shop.SEARCH_PRODUCTS.products.data
         : [];
 
-      setProducts(productsD)
+      setProducts(productsD);
 
       setLoading(false);
     };
@@ -44,82 +45,70 @@ const CategoryProductScreen = props => {
     return <Spinner />;
   }
 
-
-
   return (
-    <View style={styles.container}>
-      <View style={DefaultStyles.paddingHorizontal}>
-
-
-        <ScrollView scrollEventThrottle={400} onScroll={async ({ nativeEvent }) => {
-
-          // console.log(getPage, shop.SEARCH_PRODUCTS.products.current_page, 'current_page')
-          
-          if (getPage == shop.SEARCH_PRODUCTS.products.current_page && isCloseToBottom(nativeEvent) && getPage < shop.SEARCH_PRODUCTS.products.total) {
-
+    <View style={{ ...styles.container, ...DefaultStyles.p5 }}>
+      <ScrollView
+        scrollEventThrottle={400}
+        onScroll={async ({ nativeEvent }) => {
+          if (
+            getPage == shop.SEARCH_PRODUCTS.products.current_page &&
+            isCloseToBottom(nativeEvent) &&
+            getPage < shop.SEARCH_PRODUCTS.products.total
+          ) {
             const nPage = getPage + 1;
-            await setPage(nPage)
+            await setPage(nPage);
             if (category.seo_url) {
-              await shop.fetchSearchProducts({ slug: category.seo_url, page: nPage });
+              await shop.fetchSearchProducts({
+                slug: category.seo_url,
+                page: nPage
+              });
 
               const productsD = shop.SEARCH_PRODUCTS
                 ? shop.SEARCH_PRODUCTS.products.data
                 : [];
-              
-              const newProducts = [...products, ...productsD]
-              await setProducts(newProducts)
+
+              const newProducts = [...products, ...productsD];
+              await setProducts(newProducts);
             }
-            
           }
-
-        }}>
-          <View style={DefaultStyles.flexContainer}>
-            {products.map((item, key) => {
-              return (
-                <View key={key.toString()} style={DefaultStyles.w50}>
-                  <ProductDesign
-                    style={DefaultStyles.w95}
-                    product={item}
-                    key={key.toString()}
-                  />
-                </View>
-              );
-            })}
-          </View>
+        }}
+      >
+        <View style={DefaultStyles.flexContainer}>
+          {products.map((item, key) => {
+            return (
+              <View key={key.toString()} style={DefaultStyles.w50}>
+                <ProductDesign product={item} key={key.toString()} />
+              </View>
+            );
+          })}
+        </View>
+        {shop.SEARCH_PRODUCTS &&
+        getPage == shop.SEARCH_PRODUCTS.products.current_page &&
+        getPage < shop.SEARCH_PRODUCTS.products.total ? (
           <ActivityIndicator size="large" color="#FBA939" />
-        </ScrollView>
-
-
-      </View>
+        ) : (
+          <Text></Text>
+        )}
+      </ScrollView>
     </View>
   );
 };
 
-
-
 CategoryProductScreen.navigationOptions = navData => {
-
-  const category = navData.navigation.getParam("category")
+  const category = navData.navigation.getParam("category");
 
   return {
-    headerTitle: () => <Text>{category.name || 'Products'}</Text>
+    headerTitle: () => <Text>{category.name || "Products"}</Text>
   };
 };
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
-    backgroundColor: "#F1F1F1",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 10,
-    marginLeft: 5
+
   },
   productsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-    // flexWrap: "wrap"
+
   }
 });
 
-export default inject("store")(observer(CategoryProductScreen))
+export default inject("store")(observer(CategoryProductScreen));

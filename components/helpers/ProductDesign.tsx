@@ -18,7 +18,7 @@ const PriceText = props => {
   ) ? (
     <View style={styles.priceContainer}>
       <Text style={styles.priceNow}>
-        <Text style={styles.text}>{"\u09F3"}</Text>
+        <Text style={styles.text}>{"\u09F3"} </Text>
         {props.product.product_price_now}
       </Text>
     </View>
@@ -26,7 +26,7 @@ const PriceText = props => {
     <View style={styles.priceContainer}>
       <Text style={styles.priceNow}>$ {props.product.product_price_now}</Text>
       <Text style={styles.regularPrice}>
-        <Text style={styles.text}>{"\u09F3"}</Text>
+        <Text style={styles.text}>{"\u09F3"} </Text>
         {props.product.local_selling_price}
       </Text>
     </View>
@@ -43,10 +43,12 @@ const ProductDesign = props => {
       }}
     >
       <View style={{ ...props.style, ...styles.container }}>
+        
         <View style={styles.imageContainer}>
           {props.product.image ? (
             <Image
               style={styles.image}
+              resizeMode="cover"
               source={{
                 uri:
                   "https://rflbestbuy.com/secure/" +
@@ -74,14 +76,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,    
     borderColor: "#ddd",
-    marginHorizontal: 2,
+    marginHorizontal: 3,
     borderWidth: 1,
     backgroundColor: "#fff",
-    marginBottom: 10
+    marginBottom: 5,
+    padding:0
   },
-  imageContainer: {},
+  imageContainer: {
+    padding: 0,
+    margin:0
+  },
   textContainer: {
-    marginBottom: 0
+    marginBottom: 0,
+    paddingHorizontal: 4
   },
 
   image: {
@@ -92,9 +99,10 @@ const styles = StyleSheet.create({
 
   itemTitle: {
     fontFamily: "latoregular",
-    fontSize: 12,
+    fontSize: 14,
     marginTop: 10,
-    height: 30
+    height: 22,
+    textTransform: 'capitalize'
   },
 
   titleContainer: {

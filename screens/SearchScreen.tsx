@@ -6,7 +6,8 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
-  Keyboard
+  Keyboard,
+  TouchableWithoutFeedback
 } from "react-native";
 import Text from "../components/helpers/Text";
 import { TextInput } from "react-native-paper";
@@ -52,7 +53,12 @@ const SearchScreen = props => {
 
   if (!q && !x) {
     return (
-      <View>
+      <TouchableWithoutFeedback
+        style={styles.container}
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+      >
         <View>
           <Text> Search history : </Text>
           {JSON.parse(getQueryHistory).map((item, key) => {
@@ -61,7 +67,7 @@ const SearchScreen = props => {
             }
           })}
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 
@@ -74,25 +80,24 @@ const SearchScreen = props => {
     : [];
 
   return (
-    <View style={styles.container}>
-      <View style={DefaultStyles.paddingHorizontal}>
-        <ScrollView>
-          <View style={DefaultStyles.flexContainer}>
-              {products.map((item, key) => {
-                return (
-                  <View key={key.toString()} style={DefaultStyles.w50}>
-                    <ProductDesign
-                      style={DefaultStyles.w95}
-                      product={item}
-                      key={key.toString()}
-                    />
-                  </View>
-                );
-              })}
-          </View>
-        </ScrollView>
-      </View>
-    </View>
+    <TouchableWithoutFeedback
+      style={styles.container}
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <ScrollView>
+        <View style={{ ...DefaultStyles.flexContainer, ...DefaultStyles.ph5 }}>
+          {products.map((item, key) => {
+            return (
+              <View key={key.toString()} style={DefaultStyles.w50}>
+                <ProductDesign product={item} key={key.toString()} />
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -100,13 +105,22 @@ const HeaderSearchInput = props => {
   const [getSearchKey, setSearchKey] = useState("");
 
   return (
-    <View style={DefaultStyles.flexContainer}>
-      <TextInput
-        style={styles.searchField}
-        placeholder="I am searching for..."
-        onChangeText={setSearchKey}
-      />
-      <TouchableOpacity
+    <View
+      style={{
+        ...DefaultStyles.flexContainer,
+        ...styles.container
+      }}
+    >
+      <View>
+        <TextInput
+          style={styles.searchField}
+          placeholder="I am searching for..."
+          onChangeText={setSearchKey}
+          underlineColorAndroid={'transparent'}
+        />
+      </View>
+
+      <TouchableWithoutFeedback
         onPress={() => {
           Keyboard.dismiss();
           NavigationSearvice.navigate("Search", {
@@ -115,8 +129,19 @@ const HeaderSearchInput = props => {
           });
         }}
       >
-        <Ionicons style={{ color: "#b4b5b3" }} name="ios-search" size={32} />
-      </TouchableOpacity>
+        <Ionicons
+          style={{
+            height: 40,
+            marginTop: 8,
+            marginLeft: -5,
+            backgroundColor: "#e0e0eb",
+            lineHeight: 42,
+            paddingRight: 7
+          }}
+          name="ios-search"
+          size={30}
+        />
+      </TouchableWithoutFeedback>
     </View>
   );
 };
@@ -129,19 +154,18 @@ SearchScreen.navigationOptions = navData => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    backgroundColor: "#F1F1F1",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 8,
-    marginLeft: 0
+    flex: 1
+    // height: 0
   },
-  productsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    marginLeft: 5,
-    marginRight: 5
+  searchField: {
+    height: 40,
+    marginTop: 8,
+    borderWidth: 0,
+    borderRadius: 0,
+    backgroundColor: "#e0e0eb",
+    fontSize: 14,
+    width: 220,
+    borderBottomColor: "#e0e0eb"
   }
 });
 

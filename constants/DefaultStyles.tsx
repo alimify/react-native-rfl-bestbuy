@@ -177,9 +177,6 @@ const styles = StyleSheet.create({
     },
     m5: {
         margin: 5
-    },
-    paddingHorizontal: {
-        paddingHorizontal: 5
     }
 });
 

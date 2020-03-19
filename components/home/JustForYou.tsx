@@ -18,17 +18,17 @@ const PriceText = props => {
     props.product.actual_discount > 0 && props.product.product_price_now > 0
   ) ? (
     <Text style={styles.itemPrice}>
-      <Text style={styles.text}>{"\u09F3"}</Text>
+      <Text style={styles.text}>{"\u09F3"} </Text>
       {props.product.product_price_now}
     </Text>
   ) : (
     <View>
       <Text style={styles.itemPrice}>
-        <Text style={styles.text}>{"\u09F3"}</Text>
+        <Text style={styles.text}>{"\u09F3"} </Text>
         {props.product.product_price_now}
       </Text>
       <Text style={styles.itemRegularPrice}>
-        <Text style={styles.text}>{"\u09F3"}</Text>
+        <Text style={styles.text}>{"\u09F3"} </Text>
         {props.product.local_selling_price}
       </Text>
     </View>
@@ -53,7 +53,7 @@ const JustForYouItem = props => {
               props.product.image.full_size_directory
           }}
         />
-        <Text style={styles.itemTitle} numberOfLines={2}>
+        <Text style={styles.itemTitle} numberOfLines={1}>
           {props.product.title}
         </Text>
         <PriceText product={props.product} />
@@ -130,8 +130,8 @@ const styles = StyleSheet.create({
   titleMore: {
     fontFamily: "open-sans",
     fontStyle: "italic",
-    fontWeight: "bold",
-    color: Colors.baseColor7
+    color: "red",
+    fontSize: 14
   },
   itemContainer: {
     width: 100,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingHorizontal: 10,
     paddingTop: 20,
-    paddingBottom: 40
+    paddingBottom: 30
   },
   itemImage: {
     width: 100,
@@ -147,9 +147,10 @@ const styles = StyleSheet.create({
   },
   itemTitle: {
     fontFamily: "latoregular",
-    fontSize: 12,
+    fontSize: 13,
     marginTop: 10,
-    height: 30
+    height: 22,
+    textTransform: 'lowercase'
   },
   itemPrice: {
     fontSize: 15,

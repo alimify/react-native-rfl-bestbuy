@@ -42,7 +42,7 @@ const ProductSet = props => {
               style={[DefaultStyles.w50, styles.productBox]}
             >
               <ProductDesign
-                style={DefaultStyles.w95}
+                // style={DefaultStyles.w95}
                 product={item}
                 key={key.toString()}
               />
@@ -68,17 +68,19 @@ const styles = StyleSheet.create({
     paddingBottom: 8
   },
   titleText: {
-    fontFamily: "open-sans-bold"
+    fontFamily: "open-sans-bold",
+    fontSize: 16,
+    fontWeight: '100'
   },
   moreText: {
     fontFamily: "open-sans",
     fontStyle: "italic",
-    fontWeight: "bold",
-    color: Colors.baseColor7
+    color: "red",
+    fontSize: 14
   },
   productBox: {
-    paddingTop: 5,
-    paddingLeft: 2
+    // paddingTop: 5,
+    // paddingLeft: 2
   }
 });
 
