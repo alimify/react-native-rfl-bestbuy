@@ -116,7 +116,7 @@ const HeaderSearchInput = props => {
           style={styles.searchField}
           placeholder="I am searching for..."
           onChangeText={setSearchKey}
-          underlineColorAndroid={'transparent'}
+          underlineColorAndroid={"transparent"}
         />
       </View>
 

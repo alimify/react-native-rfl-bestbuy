@@ -19,11 +19,7 @@ const ProductScreen = props => {
     [getLoading, setLoading] = useState(true),
     [getRefreshing, setRefreshing] = useState(false);
 
-  
-  
-  
   const onRefresh = useCallback(async () => {
-
     const ProductLoading = async (shop, product) => {
       setRefreshing(true);
       await shop.fetchProductDetails({
@@ -33,9 +29,7 @@ const ProductScreen = props => {
     };
 
     ProductLoading(shop, product);
-
   }, [shop, product, setRefreshing]);
-
 
   useEffect(() => {
     const ProductLoading = async (shop, product) => {
@@ -54,7 +48,11 @@ const ProductScreen = props => {
   }
 
   return (
-    <ScrollView refreshControl={<RefreshControl refreshing={getRefreshing} onRefresh={onRefresh} />}>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={getRefreshing} onRefresh={onRefresh} />
+      }
+    >
       <View>
         <ImageSlider product={shop.PRODUCT_DETAILS} />
         <View style={DefaultStyles.paddingHorizontal}>
@@ -82,13 +80,11 @@ const ProductScreen = props => {
   );
 };
 
-
 ProductScreen.navigationOptions = navData => {
-
-  const product = navData.navigation.getParam("product")
+  const product = navData.navigation.getParam("product");
 
   return {
-    headerTitle: () => <Text>{product.title || 'Product'}</Text>,
+    headerTitle: () => <Text>{product.title || "Product"}</Text>,
     tabBarVisible: false
   };
 };
@@ -104,7 +100,7 @@ const styles = StyleSheet.create({
   slotContainer: {
     backgroundColor: "white",
     padding: 10,
-    marginVertical: 15,
+    marginVertical: 5,
     borderBottomColor: "#ddd",
     borderBottomWidth: 1
   },
@@ -115,7 +111,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   }
 });
-
-
 
 export default inject("store")(observer(withNavigation(ProductScreen)));

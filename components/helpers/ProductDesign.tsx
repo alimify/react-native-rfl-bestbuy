@@ -24,7 +24,10 @@ const PriceText = props => {
     </View>
   ) : (
     <View style={styles.priceContainer}>
-      <Text style={styles.priceNow}>$ {props.product.product_price_now}</Text>
+      <Text style={styles.priceNow}>
+        <Text style={styles.text}>{"\u09F3"} </Text>
+        {props.product.product_price_now}
+      </Text>
       <Text style={styles.regularPrice}>
         <Text style={styles.text}>{"\u09F3"} </Text>
         {props.product.local_selling_price}
@@ -43,7 +46,6 @@ const ProductDesign = props => {
       }}
     >
       <View style={{ ...props.style, ...styles.container }}>
-        
         <View style={styles.imageContainer}>
           {props.product.image ? (
             <Image
@@ -74,17 +76,17 @@ const ProductDesign = props => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,    
+    flex: 1,
     borderColor: "#ddd",
     marginHorizontal: 3,
     borderWidth: 1,
     backgroundColor: "#fff",
     marginBottom: 5,
-    padding:0
+    padding: 0
   },
   imageContainer: {
     padding: 0,
-    margin:0
+    margin: 0
   },
   textContainer: {
     marginBottom: 0,
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 10,
     height: 22,
-    textTransform: 'capitalize'
+    textTransform: "capitalize"
   },
 
   titleContainer: {

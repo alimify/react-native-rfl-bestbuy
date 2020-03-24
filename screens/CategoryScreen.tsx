@@ -45,7 +45,7 @@ const CategoryScreen = props => {
         </ScrollView>
       </View>
 
-      <View style={DefaultStyles.w70}>
+      <View style={[DefaultStyles.w70, styles.backgroundColor]}>
 
         <ScrollView onScroll={(e) => {
           const positionKeys = Object.keys(getSlotPosition),

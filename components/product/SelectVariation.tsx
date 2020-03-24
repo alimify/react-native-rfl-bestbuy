@@ -19,13 +19,20 @@ const PriceText = props => {
     props.product.actual_discount > 0 && props.product.product_price_now > 0
   ) ? (
     <View style={{}}>
-      <Text style={styles.priceNow}>$ {props.product.product_price_now}</Text>
+      <Text style={styles.priceNow}>
+        <Text style={styles.text}>{"\u09F3"} </Text>
+        {props.product.product_price_now}
+      </Text>
     </View>
   ) : (
     <View style={{}}>
-      <Text style={styles.priceNow}>$ {props.product.product_price_now}</Text>
+      <Text style={styles.priceNow}>
+        <Text style={styles.text}>{"\u09F3"} </Text>
+        {props.product.product_price_now}
+      </Text>
       <Text style={styles.regularPrice}>
-        $ {props.product.local_selling_price}
+        <Text style={styles.text}>{"\u09F3"} </Text>
+        {props.product.local_selling_price}
       </Text>
     </View>
   );
@@ -54,7 +61,7 @@ const VariationModal = props => {
         props.setModalShow(false);
       }}
     >
-      <View style={{ flex: 1 }}>
+      <View style={styles.specificationBackground}>
         <View style={styles.modalTitleContainer}>
           <Text>Please select specifications</Text>
           <View>
@@ -72,6 +79,7 @@ const VariationModal = props => {
           </View>
         </View>
         <View>
+          <Text>Price:</Text>
           <PriceText product={props.product} />
           <View>
             <Text>
@@ -222,10 +230,11 @@ const SelectVariation = props => {
           <View>
             <Text style={styles.variationText}>Select Variation & Qty</Text>
             <View style={styles.priceContainer}>
-              <Text>Price: </Text>
+              <Text>Price:</Text>
               <Text style={styles.priceAmount}>
                 {" "}
-                $ {props.product.product.local_selling_price}
+                <Text style={styles.text}>{"\u09F3"}</Text>
+                {props.product.product.local_selling_price}
               </Text>
             </View>
           </View>
@@ -257,6 +266,10 @@ const SelectVariation = props => {
 };
 
 const styles = StyleSheet.create({
+  specificationBackground: {
+    flex: 1,
+    backgroundColor: '#d0f5fc'
+  },
   container: {
     flex: 1,
     flexDirection: "row",
