@@ -19,7 +19,7 @@ const ProductSet = props => {
     <View style={styles.container}>
       {props.title ? (
         <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>{props.title}</Text>
+          <Text style={DefaultStyles.sectionTitle}>{props.title}</Text>
           <TouchableOpacity
             onPress={() => {
               if (props.screen) {
@@ -27,14 +27,14 @@ const ProductSet = props => {
               }
             }}
           >
-            <Text style={styles.moreText}>More > </Text>
+            <Text style={DefaultStyles.titleMore}>More > </Text>
           </TouchableOpacity>
         </View>
       ) : (
         <View></View>
       )}
 
-      <View style={{ ...DefaultStyles.flexContainer, ...DefaultStyles.ph5 }}>
+      <View style={{ ...DefaultStyles.flexContainer, paddingHorizontal: 10 }}>
         {products.map((item, key) => {
           return (
             <View

@@ -2,8 +2,31 @@ import { StyleSheet} from 'react-native';
 import Colors from './Colors'
 
 const styles = StyleSheet.create({
+    titleMore: {
+        fontFamily: "raleway-regular",
+        color: "purple",
+        fontSize: 12
+    },
     sectionTitle: {
-        fontFamily: 'open-sans-bold'
+        fontFamily: 'raleway-semi-bold',
+        color: "purple"
+    },
+    itemContainer: {
+        width: 120,
+        backgroundColor: "white",
+        padding: 5,
+        paddingHorizontal: 10,
+        marginLeft: 13,
+        paddingTop: 20,
+        paddingBottom: 30
+    },
+    itemTitle: {
+        fontFamily: "raleway-regular",
+        fontSize: 12,
+        marginTop: 12,
+        height: 35,
+        lineHeight: 16,
+        textTransform: 'capitalize'
     },
     baseColor4: {
         color: Colors.baseColor4
