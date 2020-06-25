@@ -53,17 +53,14 @@ const SearchScreen = props => {
 
     if (!q && !x) {
         return (
-            <TouchableWithoutFeedback
-                style={styles.container}
-                onPress={() => {
-                    Keyboard.dismiss();
-                }}
-            >
-                <View>
-                    <Text> Search history : </Text>
+            <TouchableWithoutFeedback style={styles.container} onPress={() => {
+                Keyboard.dismiss();
+            }}>
+                <View style={styles.historyContainer}>
+                    <Text style={styles.historyText}>Previously searched keywords:</Text>
                     {JSON.parse(getQueryHistory).map((item, key) => {
                         if (item) {
-                            return <Text key={key}>{item}</Text>;
+                            return <Text key={key} style={styles.historyItem}>{item}</Text>;
                         }
                     })}
                 </View>
@@ -80,24 +77,23 @@ const SearchScreen = props => {
         : [];
 
     return (
-        <TouchableWithoutFeedback
-            style={styles.searchContainer}
-            onPress={() => {
+        <View style={{marginTop: 10}}>
+            <TouchableWithoutFeedback style={styles.searchContainer} onPress={() => {
                 Keyboard.dismiss();
-            }}
-        >
-            <ScrollView>
-                <View style={{...DefaultStyles.flexContainer, ...DefaultStyles.ph5}}>
-                    {products.map((item, key) => {
-                        return (
-                            <View key={key.toString()} style={DefaultStyles.w50}>
-                                <ProductDesign product={item} key={key.toString()}/>
-                            </View>
-                        );
-                    })}
-                </View>
-            </ScrollView>
-        </TouchableWithoutFeedback>
+            }}>
+                <ScrollView>
+                    <View style={{...DefaultStyles.flexContainer, ...DefaultStyles.ph5}}>
+                        {products.map((item, key) => {
+                            return (
+                                <View key={key.toString()} style={DefaultStyles.w50}>
+                                    <ProductDesign product={item} key={key.toString()}/>
+                                </View>
+                            );
+                        })}
+                    </View>
+                </ScrollView>
+            </TouchableWithoutFeedback>
+        </View>
     );
 };
 
@@ -105,38 +101,31 @@ const HeaderSearchInput = props => {
     const [getSearchKey, setSearchKey] = useState("");
 
     return (
-        <View style={{...DefaultStyles.flexContainer, ...styles.searchContainer}}>
-            <View style={{
-                flex: 1,
-                flexDirection: "row",
-                width: 290,
-                paddingVertical: 5,
-                paddingLeft: 5
-            }}>
-                <View>
-                    <TextInput
-                        style={styles.searchBox}
-                        placeholder="I am searching for..."
-                        onChangeText={setSearchKey}
-                        underlineColorAndroid="transparent"
-                    />
-                </View>
-                <TouchableWithoutFeedback
-                    onPress={() => {
-                        Keyboard.dismiss();
-                        NavigationSearvice.navigate("Search", {
-                            q: getSearchKey,
-                            x: true
-                        });
-                    }}>
-                    <View style={{width: 20}}>
-                        <View pointerEvents="none" style={styles.searchBox}>
-                            <Ionicons style={styles.searchIcon} name="md-search" size={20}/>
-                        </View>
-                    </View>
-                </TouchableWithoutFeedback>
+        <View style={{...DefaultStyles.flexContainer, ...styles.container}}>
+            <View>
+                <TextInput
+                    style={styles.searchField}
+                    placeholder="I am searching for..."
+                    onChangeText={setSearchKey}
+                    underlineColorAndroid={'transparent'}
+                />
             </View>
 
+            <TouchableWithoutFeedback
+                onPress={() => {
+                    Keyboard.dismiss();
+                    NavigationSearvice.navigate("Search", {
+                        q: getSearchKey,
+                        x: true
+                    });
+                }}
+            >
+                <Ionicons
+                    style={styles.searchIcon}
+                    name="ios-search"
+                    size={30}
+                />
+            </TouchableWithoutFeedback>
         </View>
     );
 };
@@ -150,28 +139,41 @@ SearchScreen.navigationOptions = navData => {
 const styles = StyleSheet.create({
     container: {
         flex: 1
-        // height: 0
     },
-    searchContainer: {
-        borderRadius: 20,
-        marginLeft: -20,
-        backgroundColor: "#EEE",
+    historyContainer: {
+        padding: 10,
+        backgroundColor: '#e2e2e2'
+    },
+    historyText: {
+        color: 'purple',
+        fontSize: 16,
+        fontWeight: "bold"
+    },
+    historyItem: {
+        borderBottomColor: '#DDDDDD',
+        borderBottomWidth: 1,
+        fontSize: 15,
+        padding: 2
+    },
+    searchField: {
+        height: 35,
         borderWidth: 0,
-        borderColor: "#DDD"
-    },
-    searchBox: {
-        flexDirection: "row",
-        backgroundColor: "transparent",
-        width: 225,
-        marginLeft: 5,
-        height: 20,
-        paddingHorizontal: 0,
-        borderBottomWidth: 0
+        borderRadius: 5,
+        fontSize: 14,
+        width: 250,
+        borderBottomColor: "transparent",
+        marginLeft: -20,
+        marginTop: -5
     },
     searchIcon: {
-        color: "#b4b5b3",
-        marginLeft: 15,
-        zIndex: 111111
+        height: 35,
+        marginTop: -5,
+        backgroundColor: "purple",
+        fontSize: 18,
+        color: '#FFFFFF',
+        lineHeight: 35,
+        paddingHorizontal: 15,
+        paddingBottom: 5
     }
 });
 

@@ -2,6 +2,35 @@ import { StyleSheet} from 'react-native';
 import Colors from './Colors'
 
 const styles = StyleSheet.create({
+    pickerDesign: {
+        paddingLeft: 5,
+        marginTop: 5,
+        marginLeft: 5,
+        marginRight: 5,
+        borderColor: Colors.baseColor1,
+        borderWidth: 1,
+        borderRadius: 3,
+        alignSelf: 'center',
+    },
+    pickerHeight: {
+        height: 30
+    },
+    specificationBackground: {
+        flex: 1,
+    },
+    modalTitleContainer: {
+        // flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    modalTitleStyle: {
+        fontSize: 17,
+        fontWeight: "bold",
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        width: '95%',
+        color: 'white'
+    },
     titleMore: {
         fontFamily: "raleway-regular",
         color: "purple",
@@ -200,6 +229,9 @@ const styles = StyleSheet.create({
     },
     m5: {
         margin: 5
+    },
+    ml10: {
+        marginLeft: 10
     }
 });
 
